@@ -1,0 +1,18 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Guix",
+	"classinstvars" : [
+		"url",
+		"commit"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"commit",
+		"url",
+		"name"
+	],
+	"name" : "GxChannel",
+	"type" : "normal"
+}
