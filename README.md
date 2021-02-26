@@ -6,6 +6,6 @@ Installation:
 ```
 Metacello new
     baseline: 'Guix';
-    repository: 'github://khinsen/guix-gtoolkit/src';
+    repository: 'github://khinsen/guix-gtoolkit:main/';
     load.
 ```
