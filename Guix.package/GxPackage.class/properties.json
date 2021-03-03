@@ -6,9 +6,11 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packages",
-		"channels"
+		"definition",
+		"outputs",
+		"version",
+		"name"
 	],
-	"name" : "GxSystem",
+	"name" : "GxPackage",
 	"type" : "normal"
 }
