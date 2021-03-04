@@ -1,0 +1,3 @@
+*Guix
+ossIsPipe
+	^ false
