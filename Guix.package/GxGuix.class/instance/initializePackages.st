@@ -9,4 +9,5 @@ initializePackages
 			version: fields second;
 			outputs: fields third;
 			definition: fields fourth.
+		package parseDetail: (self executeCommand: { 'show'. package specification }).
 		packages add: package ]
