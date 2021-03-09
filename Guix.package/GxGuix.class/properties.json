@@ -8,7 +8,8 @@
 	"instvars" : [
 		"packages",
 		"channels",
-		"replProcess"
+		"replProcess",
+		"replProcessPort"
 	],
 	"name" : "GxGuix",
 	"type" : "normal"
