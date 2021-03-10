@@ -1,3 +1,3 @@
 generated-reduction actions
-reduceActionForExpressions1: nodes
+reduceActionForValues1: nodes
 	^ Array new

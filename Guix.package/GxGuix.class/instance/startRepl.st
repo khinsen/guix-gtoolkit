@@ -1,4 +1,4 @@
-external processes
+REPL
 startRepl
 	| portString |
 	replProcess ifNotNil: [ ^ self ].
@@ -15,3 +15,4 @@ startRepl
 		environmentAt: 'GxGuixPort' put: portString;
 		terminateOnShutdown.
 	replProcess run .
+	self initializeRepl

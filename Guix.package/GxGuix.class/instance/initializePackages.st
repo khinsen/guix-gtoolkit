@@ -1,13 +1,31 @@
 initialization
 initializePackages
-	packages := OrderedCollection new.
-	(self executeCommand: #('package' '-A')) linesDo: [ :eachLine |
-		| fields package |
-		fields := Character tab split: eachLine.
-		package := GxPackage new
-			name: fields first;
-			version: fields second;
-			outputs: fields third;
-			definition: fields fourth.
-		"package parseDetail: (self executeCommand: { 'show'. package specification })."
-		packages add: package ]
+	| packageData |
+	packageData := self replCommand:
+		'(fold-available-packages
+(lambda* (name version result
+                #:key outputs location
+                supported? deprecated?
+                #:allow-other-keys)
+   (if (and supported? (not deprecated?))
+     (let* ((package (name+version->package name version))
+            (license-field (package-license package))
+            (licenses (if (license? license-field)
+                          (list license-field)
+                          license-field)))
+       (cons `((name . ,name)
+               (version . ,version)
+               (outputs . ,outputs)
+               (location . ((file . ,(location-file location))
+                            (line . ,(location-line location))
+                            (column . ,(location-column location))))
+               (supported . ,supported?)
+               (deprecated . ,deprecated?)
+               (synopsis . ,(package-synopsis package))
+               (description . ,(package-description package))
+               (licenses . ,(map license-name licenses))
+               (home-page . ,(package-home-page package)))
+             result))
+     result))
+ ''())'.
+ 	packages := packageData

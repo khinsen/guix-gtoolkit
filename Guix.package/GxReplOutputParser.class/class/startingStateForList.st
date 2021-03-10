@@ -1,3 +1,0 @@
-generated
-startingStateForList
-	^ 1
