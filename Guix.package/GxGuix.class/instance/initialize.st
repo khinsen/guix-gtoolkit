@@ -3,4 +3,4 @@ initialize
 	self replProcessPort: 9978.
 	self startRepl.
 	self initializeChannels.
-	self initializePackages.
+	self initializePackagesV2.
