@@ -14,5 +14,6 @@ startRepl
 			'guix'. 'repl'. '-t'. 'machine'. '--listen=tcp:', portString };
 		environmentAt: 'GxGuixPort' put: portString;
 		terminateOnShutdown.
-	replProcess run .
+	replProcess run.
+	5 seconds wait.
 	self initializeRepl

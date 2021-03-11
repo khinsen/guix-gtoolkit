@@ -1,6 +1,7 @@
 generated
 definitionComment
-"<whitespace>
+"%glr;
+<whitespace>
     : \s+
     ;
 <sign>

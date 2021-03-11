@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "BeaconSignal",
+	"category" : "Guix-Guix",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"result",
+		"command",
+		"process"
+	],
+	"name" : "GxReplCommandSignal",
+	"type" : "normal"
+}
