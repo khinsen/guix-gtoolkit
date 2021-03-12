@@ -1,7 +1,7 @@
 initialization
-initializePackages
+initializePackagesV2
 	| packageData |
-	packageData := self replCommand:
+	packageData := self runReplCommand:
 		'(fold-available-packages
 (lambda* (name version result
                 #:key outputs location

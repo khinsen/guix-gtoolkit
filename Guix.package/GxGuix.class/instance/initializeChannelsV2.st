@@ -1,16 +1,16 @@
 initialization
-initializeChannels
+initializeChannelsV2
 	| channelData |
-	self replCommand:
+	self runReplCommand:
 		'(use-modules
 			(guix channels)
 			(guix describe))'.
-	self replCommand:
+	self runReplCommand:
 		'(define (channel-info channel)
 			`((name .  ,(channel-name channel))
 			(url . ,(channel-url channel))
 			(commit . ,(channel-commit channel))))'.
-	channelData := self replCommand:
+	channelData := self runReplCommandAndParse:
 		'(map channel-info (current-channels))'.
 	channels := channelData first collect: [ :each |
 		GxChannel new

@@ -1,5 +1,5 @@
 REPL
-replCommand: aString
+runReplCommand: aString
 	| stream result localhost |
 	localhost := SocketAddress fromDottedString: '127.0.0.1'.
 	stream := SocketStream openConnectionToHost: localhost port: replProcessPort timeout: 60.
@@ -13,4 +13,4 @@ replCommand: aString
 		command: aString;
 		result: result;
 		yourself) emit.
-	^ GxReplOutputParser parse: result.	
+	^ result	
