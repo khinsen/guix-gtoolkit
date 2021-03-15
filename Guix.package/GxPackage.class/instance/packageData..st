@@ -8,3 +8,5 @@ packageData: packageData
 	description := packageData at: #description.
 	licenses := packageData at: #licenses.
 	homePage := packageData at: #'home-page'.
+	(homePage = false)
+		ifTrue: [ homePage := nil ].

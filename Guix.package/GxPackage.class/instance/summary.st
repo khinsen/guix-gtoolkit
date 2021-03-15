@@ -3,17 +3,16 @@ summary
 	^ String streamContents: [ :stream |
 		stream
 			nextPutAll: self specification;
-			nextPut: Character cr;
-			nextPut: Character cr;
+			cr; cr;
 			nextPutAll: self synopsis;
 			nextPut: Character cr;
 			nextPut: Character cr;
 			nextPutAll: self description;
 			nextPut: Character cr;
-			nextPut: Character cr;
-			nextPutAll: self homePage;
-			nextPut: Character cr;
-			nextPut: Character cr;
+			nextPut: Character cr.
+		self homePage ifNotNil: [
+			stream nextPutAll: self homePage; cr; cr ].
+		stream
 			nextPutAll: 'License(s): ';
 			nextPutAll: (', ' join: self licenses);
 			yourself ]

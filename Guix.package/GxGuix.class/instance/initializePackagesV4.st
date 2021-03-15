@@ -46,7 +46,7 @@ initializePackagesV4
 			data))'.
 	numberOfPackages := self runReplCommandAndParse: 
 		'(length available-packages)'.
-	packages := OrderedCollection new.
+	packages := Array new: numberOfPackages.
 	numberOfPackages to: 1 by: -1 do: [ :index |
 		| packageData |
 		packageData := self runReplCommandAndParse:
