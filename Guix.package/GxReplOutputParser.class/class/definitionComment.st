@@ -68,7 +68,7 @@ Symbol
 	: <symbol> 'symbol' {symbol value asSymbol}
 	;
 String
-	: <string> 'string' {string value copyReplaceAll: '\n' with: (String with: Character cr)}
+	: <string> 'string' {string value allButFirst allButLast copyReplaceAll: '\n' with: (String with: Character cr)}
 	;
 Association
 	: ""("" Symbol 'symbol' ""."" Expression 'expr' "")"" {symbol -> expr}

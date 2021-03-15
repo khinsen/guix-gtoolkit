@@ -1,6 +1,6 @@
 initialization
 initialize
-"	self replProcessPort: 9978.
-	self startRepl."
-	self initializeChannelsV1.
-	self initializePackagesV1.
+	self replProcessPort: 9977.
+	self startRepl.
+	self initializeChannelsV2.
+	self initializePackagesV4.

@@ -1,9 +1,9 @@
 inspecting
-gtSpecificationFor: aView
+gtSummaryFor: aView
 	<gtView>
 	^ aView forward
-		title: 'Specification';
+		title: 'Summary';
 		priority: 0;
-		object: [ self specification ];
+		object: [ self summary ];
 		view: #gtStringFor:;
 		yourself

@@ -12,7 +12,7 @@ initializeChannelsV2
 			(commit . ,(channel-commit channel))))'.
 	channelData := self runReplCommandAndParse:
 		'(map channel-info (current-channels))'.
-	channels := channelData first collect: [ :each |
+	channels := channelData collect: [ :each |
 		GxChannel new
 			name: (each at: #name);
 			url: (each at: #url);
