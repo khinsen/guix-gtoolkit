@@ -4,8 +4,8 @@ executeCommand: anArray
 	tempFileReference := FileLocator temp / 'guix_command_stdout.txt'.
 	self assert: tempFileReference exists not.
 	process := OSSUnixSubprocess new
-		command: '/usr/bin/ssh';
-		arguments: #('guix' 'guix'), anArray;
+		command: self class guixCommand;
+		arguments: anArray;
 		redirectStdoutTo: (StandardFileStream newFileNamed:  tempFileReference fullName);
 		runAndWait.
 	process isSuccess

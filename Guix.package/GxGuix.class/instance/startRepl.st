@@ -7,12 +7,9 @@ startRepl
 		portString = (each envVariables at: 'GxGuixPort') ])
 		ifNotEmpty: [ :p | replProcess := p. ^ self ].
 	replProcess := OSSUnixSubprocess new
-		command: '/usr/bin/ssh';
-		arguments: {
-			'-L'. portString, ':guix:', portString.
-			'guix'.
-			'guix'. 'repl'. '-t'. 'machine'. '--listen=tcp:', portString };
+		command: self class guixCommand;
+		arguments: { 'repl'. '-t'. 'machine'. '--listen=tcp:', portString };
 		environmentAt: 'GxGuixPort' put: portString;
 		terminateOnShutdown.
 	replProcess run.
-	5 seconds wait
+	2 seconds wait
