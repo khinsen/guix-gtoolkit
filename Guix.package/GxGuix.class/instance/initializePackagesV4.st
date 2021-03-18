@@ -4,7 +4,8 @@ initializePackagesV4
 	self runReplCommand:
 		'(use-modules
 			(gnu packages)
-            (guix packages)
+			(guix packages)
+			(guix store)
             (guix licenses)
             (guix utils))'.
 	self runReplCommand:
@@ -24,13 +25,20 @@ initializePackagesV4
 			(let*
 					((package (specification->package package-specification))
 					(location (package-location package))
+					(store-paths
+						(map (lambda (out)
+								(with-store store
+									(cons
+										(string->symbol out)
+										(package-output store package out))))
+							(package-outputs package)))
 					(license-field (package-license package))
 					(licenses (if (license? license-field)
 								(list license-field)
 								license-field)))
 				`((name . ,(package-name package))
 				(version . ,(package-version package))
-				(outputs . ,(list->vector (package-outputs package)))
+				(outputs . ,(list->vector store-paths))
 				(location . ,(list->vector
 								`((file . ,(location-file location))
                                   (line . ,(location-line location))
