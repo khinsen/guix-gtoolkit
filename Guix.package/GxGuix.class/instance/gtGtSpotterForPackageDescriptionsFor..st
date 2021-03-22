@@ -8,7 +8,5 @@ gtGtSpotterForPackageDescriptionsFor: aStep
 		filter: GtFilterSubstrings;
 		candidatesLimit: 7;
 		itemName: [ :each |
-			each synopsis,
-			Character cr asString,
-			Character cr asString,
+			each synopsis, ' ',
 			each description ]
