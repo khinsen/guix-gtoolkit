@@ -5,7 +5,6 @@ initializePackagesV4
 		'(use-modules
 			(gnu packages)
 			(guix packages)
-			(guix store)
             (guix licenses)
             (guix utils))'.
 	self runReplCommand:
@@ -25,13 +24,8 @@ initializePackagesV4
 			(let*
 					((package (specification->package package-specification))
 					(location (package-location package))
-					(store-paths
-						(map (lambda (out)
-								(with-store store
-									(cons
-										(string->symbol out)
-										(package-output store package out))))
-							(package-outputs package)))
+					(store-paths (map (lambda (out) (cons (string->symbol out) ""))
+										(package-outputs package)))
 					(license-field (package-license package))
 					(licenses (if (license? license-field)
 								(list license-field)
