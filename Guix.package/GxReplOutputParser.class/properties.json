@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "SmaCCGLRParser",
-	"category" : "Guix-Parser",
+	"category" : "Guix-REPL",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

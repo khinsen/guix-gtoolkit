@@ -1,18 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "Announcement",
 	"category" : "Guix-Core",
-	"classinstvars" : [
-		"url",
-		"commit"
-	],
+	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"commit",
-		"url",
-		"name"
+		"environment"
 	],
-	"name" : "GxChannel",
+	"name" : "GxEnvironmentModified",
 	"type" : "normal"
 }

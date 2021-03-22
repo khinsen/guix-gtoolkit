@@ -12,4 +12,4 @@ startRepl
 		environmentAt: 'GxGuixPort' put: portString;
 		terminateOnShutdown.
 	replProcess run.
-	2 seconds wait
+	5 seconds wait

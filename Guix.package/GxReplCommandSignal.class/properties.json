@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "BeaconSignal",
-	"category" : "Guix-Guix",
+	"category" : "Guix-REPL",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

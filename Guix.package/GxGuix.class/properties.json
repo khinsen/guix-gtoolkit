@@ -1,8 +1,10 @@
 {
 	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Guix-Guix",
-	"classinstvars" : [ ],
+	"category" : "Guix-Core",
+	"classinstvars" : [
+		"guixAnnouncer"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
