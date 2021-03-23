@@ -6,8 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"environment"
+		"package"
 	],
-	"name" : "GxEnvironmentModified",
+	"name" : "GxPackageBuilt",
 	"type" : "normal"
 }

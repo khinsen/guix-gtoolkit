@@ -6,10 +6,13 @@ executeCommand: anArray
 	process := OSSUnixSubprocess new
 		command: self class guixCommand;
 		arguments: anArray;
+		"Setting one dummy environment variable in order to get rid
+		of the default ones."
+		environmentAt: 'GxGuix' put: 'true';
 		redirectStdoutTo: (StandardFileStream newFileNamed:  tempFileReference fullName);
 		runAndWait.
-	process isSuccess
-		ifFalse: [ self error: process exitStatusInterpreter printString ].
 	output := tempFileReference contents.
 	tempFileReference delete.
+	process isSuccess
+		ifFalse: [ self error: process exitStatusInterpreter printString ].
 	^ output

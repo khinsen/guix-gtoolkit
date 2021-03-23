@@ -1,7 +1,8 @@
 inspecting
 gtOutputsFor: aView
 	<gtView>
-	^ aView columnedList
+	| view |
+	view := aView columnedList
 		title: 'Outputs';
 		priority: 6;
 		items: [ self storePaths associations ];
@@ -10,4 +11,10 @@ gtOutputsFor: aView
 		column: 'Available' text: [ :each |
 			each value asFileReference isDirectory ];
 		send: [ :each | each value asFileReference ];
-		yourself
+		updateWhen: GxPackageBuilt in: GxGuix announcer.
+	self isInStore ifFalse: [
+		view
+			actionButtonIcon: BrGlamorousVectorIcons repair
+				tooltip: 'Build package'
+				action: [ [ self build ] fork ] ].
+	^ view
