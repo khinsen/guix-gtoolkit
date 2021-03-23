@@ -1,3 +1,3 @@
 accessing
 announcer
-	^ guixAnnouncer ifNil: [ guixAnnouncer := Announcer new ]
+	^ announcer ifNil: [ announcer := Announcer new ]

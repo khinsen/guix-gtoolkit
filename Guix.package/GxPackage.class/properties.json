@@ -13,7 +13,9 @@
 		"licenses",
 		"description",
 		"synopsis",
-		"location"
+		"location",
+		"guix",
+		"storePaths"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"

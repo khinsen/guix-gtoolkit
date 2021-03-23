@@ -5,6 +5,8 @@ initializePackagesV4
 		'(use-modules
 			(gnu packages)
 			(guix packages)
+			(guix derivations)
+			(guix store)
             (guix licenses)
             (guix utils))'.
 	self runReplCommand:
@@ -24,15 +26,14 @@ initializePackagesV4
 			(let*
 					((package (specification->package package-specification))
 					(location (package-location package))
-					(store-paths (map (lambda (out) (cons (string->symbol out) ""))
-										(package-outputs package)))
 					(license-field (package-license package))
 					(licenses (if (license? license-field)
 								(list license-field)
 								license-field)))
 				`((name . ,(package-name package))
 				(version . ,(package-version package))
-				(outputs . ,(list->vector store-paths))
+				(outputs . ,(list->vector (map string->symbol
+											(package-outputs package))))
 				(location . ,(list->vector
 								`((file . ,(location-file location))
                                   (line . ,(location-line location))
@@ -46,6 +47,16 @@ initializePackagesV4
 			(let ((data (get-data-for-package (car available-packages))))
 				(set! available-packages (cdr available-packages))
 			data))'.
+	self runReplCommand:
+        '(define (store-paths specification)
+           (let* ((package (specification->package specification))
+                  (drv (with-store store
+                                   (package-derivation store package #:graft? #f)))
+                  (paths (derivation->output-paths drv)))
+             (list->vector
+              (map (lambda (entry)
+                     (cons (string->symbol (car entry)) (cdr entry)))
+                   paths))))'.
 	numberOfPackages := self runReplCommandAndParse: 
 		'(length available-packages)'.
 	packages := Array new: numberOfPackages.
@@ -54,7 +65,7 @@ initializePackagesV4
 		packageData := self runReplCommandAndParse:
 			'(get-data-for-next-package)'.
 		packages at: index put:
-			(GxPackage fromPackageData: packageData) ].
+			(GxPackage new guix: self; packageData: packageData) ].
 	self
 		assert: (self runReplCommandAndParse: '(length available-packages)')
 		equals: 0.

@@ -3,7 +3,7 @@
 	"super" : "Object",
 	"category" : "Guix-Core",
 	"classinstvars" : [
-		"guixAnnouncer"
+		"announcer"
 	],
 	"pools" : [ ],
 	"classvars" : [ ],
