@@ -5,6 +5,6 @@ gtGtSpotterForPackageHomePagesFor: aStep
 		priority: 3;
 		title: 'Home pages';
 		allCandidates: [ packages ];
-		filter: GtFilterSubstrings;
+		filter: GtFilterSubstring;
 		candidatesLimit: 7;
 		itemName: #homePage

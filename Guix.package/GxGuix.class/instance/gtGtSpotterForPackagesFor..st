@@ -5,6 +5,6 @@ gtGtSpotterForPackagesFor: aStep
 		priority: 1;
 		title: 'Packages';
 		allCandidates: [ packages ];
-		filter: GtFilterSubstrings;
+		filter: GtFilterSubstring;
 		candidatesLimit: 7;
 		itemName: #name
