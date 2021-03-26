@@ -1,0 +1,3 @@
+operating
+start
+	self runBuildProcess.

@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Guix-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"specification",
+		"guix",
+		"process",
+		"storePaths",
+		"buildLog"
+	],
+	"name" : "GxPackageBuilder",
+	"type" : "normal"
+}
