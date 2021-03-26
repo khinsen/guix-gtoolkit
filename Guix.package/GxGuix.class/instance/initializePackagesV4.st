@@ -47,16 +47,7 @@ initializePackagesV4
 			(let ((data (get-data-for-package (car available-packages))))
 				(set! available-packages (cdr available-packages))
 			data))'.
-	self runReplCommand:
-        '(define (store-paths specification)
-           (let* ((package (specification->package specification))
-                  (drv (with-store store
-                                   (package-derivation store package #:graft? #f)))
-                  (paths (derivation->output-paths drv)))
-             (list->vector
-              (map (lambda (entry)
-                     (cons (string->symbol (car entry)) (cdr entry)))
-                   paths))))'.
+
 	numberOfPackages := self runReplCommandAndParse: 
 		'(length available-packages)'.
 	packages := Array new: numberOfPackages.
