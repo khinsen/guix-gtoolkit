@@ -1,3 +1,0 @@
-operating
-start
-	self runBuildProcess.
