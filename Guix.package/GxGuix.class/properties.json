@@ -12,7 +12,8 @@
 		"channels",
 		"replProcess",
 		"replProcessPort",
-		"worker"
+		"worker",
+		"tasks"
 	],
 	"name" : "GxGuix",
 	"type" : "normal"

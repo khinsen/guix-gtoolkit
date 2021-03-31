@@ -1,8 +1,9 @@
 operating
 runBuildProcess
+	status := #running.
 	process := OSSUnixSubprocess new
 		command: GxGuix guixCommand;
-		arguments: { 'build'. specification };
+		arguments: { 'build'. package specification };
 		"Setting one dummy environment variable in order to get rid
 		of the default ones."
 		environmentAt: 'GxGuix' put: 'true';
@@ -17,3 +18,5 @@ runBuildProcess
 		closeAndCleanStreams.
 	process isSuccess
 		ifFalse: [ self error: process exitStatusInterpreter printString ].
+	GxGuix announcer announce: (GxPackageBuilt for: package).
+	status := #finished.

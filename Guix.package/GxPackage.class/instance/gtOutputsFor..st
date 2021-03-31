@@ -16,5 +16,5 @@ gtOutputsFor: aView
 		view
 			actionButtonIcon: BrGlamorousVectorIcons repair
 				tooltip: 'Build package'
-				action: [ [ self build ] fork ] ].
+				action: [ self runPackageBuilder ] ].
 	^ view

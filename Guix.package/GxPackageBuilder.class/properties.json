@@ -6,11 +6,12 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"specification",
 		"guix",
 		"process",
 		"storePaths",
-		"buildLog"
+		"buildLog",
+		"package",
+		"status"
 	],
 	"name" : "GxPackageBuilder",
 	"type" : "normal"
