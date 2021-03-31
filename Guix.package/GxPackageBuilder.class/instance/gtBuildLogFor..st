@@ -10,10 +10,10 @@ gtBuildLogFor: aView
 				constraintsDo: [ :c | 
 					c vertical matchParent. 
 					c horizontal matchParent ];
-				editor: ((BrTextEditor new
+				editor: (BrTextEditor new
 					beLineBased;
 					beReadOnlyWithSelection;
 					text: (buildLog asRopedText
 							glamorousRegularFontAndSize);
-					moveCursorTo: buildLog size) );
+					moveCursorTo: buildLog size);
 				scrollToLast ]

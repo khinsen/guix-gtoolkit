@@ -1,5 +1,5 @@
 initialization
-initializeChannelsV2
+initializeChannels
 	| channelData |
 	self runReplCommand:
 		'(use-modules

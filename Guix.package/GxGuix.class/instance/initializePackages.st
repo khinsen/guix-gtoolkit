@@ -1,5 +1,5 @@
 initialization
-initializePackagesV4
+initializePackages
 	| numberOfPackages |
 	self runReplCommand:
 		'(use-modules
@@ -35,7 +35,7 @@ initializePackagesV4
 				(outputs . ,(list->vector (map string->symbol
 											(package-outputs package))))
 				(location . ,(list->vector
-								`((file . ,(location-file location))
+								`((file . ,(search-path %load-path (location-file location)))
                                   (line . ,(location-line location))
                                   (column . ,(location-column location)))))
 				(synopsis . ,(package-synopsis package))

@@ -1,5 +1,5 @@
-initialization
-initializeChannelsV1
+obsolete
+initializeChannelsWithoutRepl
 	| channelData |
 	channelData :=  NeoJSONReader fromString:
 		(self executeCommand: #('describe' '-f' 'json')).

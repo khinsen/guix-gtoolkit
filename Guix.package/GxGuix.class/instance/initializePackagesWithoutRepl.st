@@ -1,5 +1,5 @@
-initialization
-initializePackagesV1
+obsolete
+initializePackagesWithoutRepl
 	packages := OrderedCollection new.
 	(self executeCommand: #('package' '-A')) linesDo: [ :eachLine |
 		| fields package |
