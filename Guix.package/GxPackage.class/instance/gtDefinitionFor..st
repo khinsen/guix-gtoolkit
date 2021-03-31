@@ -12,7 +12,7 @@ gtDefinitionFor: aView
 			source := sourceFile contents.
 			start := (source indexForLine: (location at: #line) - 1)
 							+ (location at: #column).
-			end := source findCloseParenthesisFor: start.
+			end := (source findCloseParenthesisFor: start) - 1.
 			source := source asRopedText
 						glamorousCodeFontAndSize.
 			(source from: start to: end) foreground: Color blue.
@@ -25,4 +25,5 @@ gtDefinitionFor: aView
 					beLineBased;
 					beReadOnlyWithSelection;
 					text: source;
-					moveCursorTo: start) ]
+					moveCursorTo: start);
+				scrollToPosition: (location at: #line) - 1 ]
