@@ -1,15 +1,11 @@
 operating
 runBuildProcess
 	status := #running.
-	process := OSSUnixSubprocess new
-		command: GxGuix guixCommand;
-		arguments: { 'build'. package specification };
-		"Setting one dummy environment variable in order to get rid
-		of the default ones."
-		environmentAt: 'GxGuix' put: 'true';
-		redirectStdout;
-		redirectStderr.
+	process := (guix newGuixProcessWithArguments:
+					{ 'build'. package specification }).
 	process
+		redirectStdout;
+		redirectStderr;
 		run;
 		waitForExitPollingEvery: (Delay forMilliseconds: 1000)
 			doing: [ :aProcess :stdoutStream :stderrStream |
