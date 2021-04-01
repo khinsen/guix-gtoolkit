@@ -3,5 +3,6 @@ initialize
 	self initializeWorker.
 	self replProcessPort: 9977.
 	self startRepl.
-	self initializeChannels.
-	self initializePackages.
+	self initializeChannelsWithoutRepl.
+	self initializePackgesFromJSON.
+	"self initializePackages."

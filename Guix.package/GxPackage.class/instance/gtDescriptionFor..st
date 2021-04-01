@@ -5,7 +5,11 @@ gtDescriptionFor: aView
 		title: 'Description';
 		priority: 0;
 		disableAsync;
-		stencil: [ (GtDocumenter forText: self pillarDescription) ];
+		stencil: [
+			| documenter |
+			documenter := GtDocumenter forText: self pillarDescription.
+			documenter editor beReadOnlyWithSelection.
+			documenter ];
 		actionButtonIcon: BrGlamorousVectorIcons remove
 			tooltip: 'Decrease font size'
 			action: [ :aToggle :aTab | aTab viewContentElement decreaseNormalFontSize ];

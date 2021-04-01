@@ -15,7 +15,8 @@
 		"synopsis",
 		"location",
 		"guix",
-		"storePaths"
+		"storePaths",
+		"channels"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"

@@ -4,7 +4,7 @@ gtChannelsFor: aView
 	^ aView columnedList
 		title: 'Channels';
 		priority: 5;
-		items: [ channels ];
+		items: [ channels values ];
 		column: 'Name' text: #name;
 		column: 'Commit' text: #commit;
 		yourself

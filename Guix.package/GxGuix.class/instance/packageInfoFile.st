@@ -1,6 +1,10 @@
 accessing
 packageInfoFile
-	| directory |
+	| directory channelHash |
 	directory := FileLocator home / '.config' / 'guix-gtoolkit'.
 	directory ensureCreateDirectory.
-	channels flatCollect: [ :each | each name, each commit ]
+	channelHash := (SHA256 hashMessage:
+					(self channels values flatCollect: [ :each |
+						{each name. each commit} ])
+					printString) hex.
+	^ directory / (channelHash, '.json')
