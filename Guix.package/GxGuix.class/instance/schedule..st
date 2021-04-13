@@ -1,4 +1,5 @@
 building
 schedule: aBuilder
 	tasks add: aBuilder.
-	worker schedule: aBuilder asTask
+	worker schedule: aBuilder asTask.
+	(GxSignal on: aBuilder) emit.

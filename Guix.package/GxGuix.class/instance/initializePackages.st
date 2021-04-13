@@ -57,6 +57,7 @@ initializePackages
 			'(get-data-for-next-package)'.
 		packages at: index put:
 			(GxPackage new guix: self; packageData: packageData) ].
+	packages := GxPackageGroup new packages: packages.
 	self
 		assert: (self runReplCommandAndParse: '(length available-packages)')
 		equals: 0.

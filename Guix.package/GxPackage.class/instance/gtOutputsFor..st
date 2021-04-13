@@ -11,7 +11,7 @@ gtOutputsFor: aView
 		column: 'Available' text: [ :each |
 			each value asFileReference isDirectory ];
 		send: [ :each | each value asFileReference ];
-		updateWhen: GxPackageBuilt in: GxGuix announcer.
+		updateWhen: GxPackageBuilt in: [ guix announcer ].
 	self isInStore ifFalse: [
 		view
 			actionButtonIcon: BrGlamorousVectorIcons repair

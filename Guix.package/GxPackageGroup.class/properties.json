@@ -7,14 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"packages",
-		"channels",
-		"replProcess",
-		"replProcessPort",
-		"worker",
-		"tasks",
-		"announcer",
-		"events"
+		"guix",
+		"name"
 	],
-	"name" : "GxGuix",
+	"name" : "GxPackageGroup",
 	"type" : "normal"
 }

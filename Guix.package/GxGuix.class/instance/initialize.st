@@ -6,3 +6,4 @@ initialize
 	self initializeChannelsWithoutRepl.
 	self initializePackgesFromJSON.
 	"self initializePackages."
+	events := OrderedCollection new.

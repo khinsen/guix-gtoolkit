@@ -14,5 +14,5 @@ runBuildProcess
 		closeAndCleanStreams.
 	process isSuccess
 		ifFalse: [ self error: process exitStatusInterpreter printString ].
-	GxGuix announcer announce: (GxPackageBuilt for: package).
+	guix announce: (GxPackageBuilt for: package).
 	status := #finished.

@@ -1,10 +1,9 @@
 inspecting
 gtPackagesFor: aView
 	<gtView>
-	^ aView columnedList
+	^ aView forward
 		title: 'Packages';
 		priority: 1;
-		items: [ packages ];
-		column: 'Name' text: #name;
-		column: 'Version' text: #version;
+		object: [ packages ];
+		view: #gtPackagesFor:;
 		yourself

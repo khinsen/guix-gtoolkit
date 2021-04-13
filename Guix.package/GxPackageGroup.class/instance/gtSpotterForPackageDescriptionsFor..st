@@ -1,5 +1,5 @@
-searching
-gtGtSpotterForPackageDescriptionsFor: aStep
+inspecting
+gtSpotterForPackageDescriptionsFor: aStep
 	<gtSearch>
 	^ aStep listProcessor
 		priority: 2;
