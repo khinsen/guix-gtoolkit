@@ -2,11 +2,13 @@ inspecting
 gtFilesFor: aView
 	<gtView>
 	| view |
-	view := aView forward
+	view := aView explicit
 		title: 'Files';
 		priority: 5;
-		object: [ (self storePaths at: #out) asFileReference ];
-		view: #gtTreeFor:;
+		stencil: [
+			((self storePaths at: #out) asFileReference
+				gtTreeFor: aView)
+				asElement ];
 		updateWhen: GxPackageBuilt in: [ guix announcer ].
 	self outIsInStore ifFalse: [
 		view

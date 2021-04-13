@@ -1,3 +1,3 @@
 accessing
 repl
-	^ replProcess ifNil: [ replProcess := self startRepl ]
+	^ replProcess ifNil: [ self startRepl. replProcess ]
