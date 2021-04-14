@@ -1,4 +1,4 @@
-obsolete
+accessing
 initializeChannelsWithoutRepl
 	| channelData channelNames |
 	channelData :=  NeoJSONReader fromString:
@@ -14,4 +14,5 @@ initializeChannelsWithoutRepl
 					name: (each at: #name) asSymbol;
 					url: (each at: #url);
 					commit: (each at: #commit);
-					yourself) ]
+					yourself) ].
+	^ channels

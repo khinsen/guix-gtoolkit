@@ -2,15 +2,14 @@
 	"commentStamp" : "",
 	"super" : "Object",
 	"category" : "Guix-Core",
-	"classinstvars" : [ ],
+	"classinstvars" : [
+		"uniqueInstance"
+	],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packages",
-		"guix",
-		"name",
-		"channels"
+		"environments"
 	],
-	"name" : "GxEnvironment",
+	"name" : "GxNamedEnvironments",
 	"type" : "normal"
 }

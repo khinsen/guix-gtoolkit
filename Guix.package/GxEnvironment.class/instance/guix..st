@@ -1,3 +1,4 @@
 accessing
 guix: aGuix
-	guix := aGuix
+	guix := aGuix.
+	channels := aGuix channels

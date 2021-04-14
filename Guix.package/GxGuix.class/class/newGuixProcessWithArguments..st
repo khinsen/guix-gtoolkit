@@ -1,4 +1,4 @@
-operating
+accessing
 newGuixProcessWithArguments: anArray
 	^ OSSUnixSubprocess new
 		command: self guixCommand;

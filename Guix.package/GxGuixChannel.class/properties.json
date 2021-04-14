@@ -1,16 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "GxChannel",
 	"category" : "Guix-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
-	"instvars" : [
-		"packages",
-		"guix",
-		"name",
-		"channels"
-	],
-	"name" : "GxEnvironment",
+	"instvars" : [ ],
+	"name" : "GxGuixChannel",
 	"type" : "normal"
 }

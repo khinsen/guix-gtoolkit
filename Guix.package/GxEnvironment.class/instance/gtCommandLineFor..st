@@ -3,7 +3,7 @@ gtCommandLineFor: aView
 	<gtView>
 	^ aView explicit
 		title: 'Command line';
-		priority: 2;
+		priority: 5;
 		stencil: [
 			BrEditorElement new
 				margin: (BlInsets all: 10);
