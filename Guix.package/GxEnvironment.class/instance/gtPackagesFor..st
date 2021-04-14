@@ -16,5 +16,5 @@ gtPackagesFor: aView
 					self addPackage: anItem.
 					anActOnEvent beActed ] ]
 		tooltip: 'Add Package';
-		"updateWhen: GxEnvironmentModified in: GxGuix announcer;"
+		updateWhen: GxEnvironmentModified in: guix announcer;
 		yourself

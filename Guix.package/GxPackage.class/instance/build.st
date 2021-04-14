@@ -1,5 +1,5 @@
 operating
-runPackageBuilder
+build
 	guix schedule:
 		(GxPackageBuilder new
 			guix: guix;

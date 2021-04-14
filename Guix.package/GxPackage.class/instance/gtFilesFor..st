@@ -14,5 +14,5 @@ gtFilesFor: aView
 		view
 			actionButtonIcon: BrGlamorousVectorIcons repair
 				tooltip: 'Build package'
-				action: [ self runPackageBuilder ] ].
+				action: [ self build ] ].
 	^ view
