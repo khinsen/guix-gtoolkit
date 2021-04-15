@@ -2,7 +2,7 @@ REPL
 startRepl
 	| portString |
 	replProcess ifNotNil: [ ^ self ].
-	portString := replProcessPort asString.
+	portString := self replProcessPort asString.
 	(self class activeReplProcesses select: [ :each |
 		portString = (each envVariables at: 'GxGuixPort') ])
 		ifNotEmpty: [ :p | replProcess := p. ^ self ].

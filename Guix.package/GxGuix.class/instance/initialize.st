@@ -1,9 +1,7 @@
 initialization
 initialize
 	self initializeWorker.
-	self replProcessPort: 9977.
+	self initializeChannels.
 	self startRepl.
-	self initializeChannelsWithoutRepl.
 	self initializePackgesFromJSON.
-	"self initializePackages."
 	events := OrderedCollection new.

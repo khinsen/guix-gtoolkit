@@ -9,7 +9,6 @@
 		"packages",
 		"channels",
 		"replProcess",
-		"replProcessPort",
 		"worker",
 		"tasks",
 		"announcer",

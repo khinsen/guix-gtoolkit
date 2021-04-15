@@ -4,7 +4,7 @@ runReplCommand: aString
 	FileStream stdout
 		<< 'REPL: '; << aString; lf; flush.
 	localhost := SocketAddress fromDottedString: '127.0.0.1'.
-	openStream := [ stream := SocketStream openConnectionToHost: localhost port: replProcessPort timeout: 120 ].
+	openStream := [ stream := SocketStream openConnectionToHost: localhost port: self replProcessPort timeout: 120 ].
 	openStream
 		on: ConnectionTimedOut
 		do: [ self restartRepl. openStream value ].

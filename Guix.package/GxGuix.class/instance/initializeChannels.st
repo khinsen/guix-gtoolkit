@@ -1,20 +1,18 @@
-initialization
+accessing
 initializeChannels
-	| channelData |
-	self runReplCommand:
-		'(use-modules
-			(guix channels)
-			(guix describe))'.
-	self runReplCommand:
-		'(define (channel-info channel)
-			`((name .  ,(channel-name channel))
-			(url . ,(channel-url channel))
-			(commit . ,(channel-commit channel))))'.
-	channelData := self runReplCommandAndParse:
-		'(map channel-info (current-channels))'.
-	channels := channelData collect: [ :each |
-		GxChannel new
-			name: (each at: #name);
-			url: (each at: #url);
-			commit: (each at: #commit);
-			yourself ]
+	| channelData channelNames |
+	channelData :=  NeoJSONReader fromString:
+		(self executeCommand: #('describe' '-f' 'json')).
+	channelNames := channelData collect: [ :each |
+		(each at: #name) asSymbol ].
+	channels := OrderedDictionary new.
+	channelNames sorted do: [ :each | channels at: each put: nil ].
+	channelData do: [ :each |
+		channels
+			at: (each at: #name) asSymbol
+			put: (GxChannel new
+					name: (each at: #name) asSymbol;
+					url: (each at: #url);
+					commit: (each at: #commit);
+					yourself) ].
+	^ channels
