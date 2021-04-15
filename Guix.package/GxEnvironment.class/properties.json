@@ -6,10 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packages",
 		"guix",
 		"name",
-		"channels"
+		"channels",
+		"packageOutputs"
 	],
 	"name" : "GxEnvironment",
 	"type" : "normal"

@@ -13,7 +13,7 @@ gtSpotterForChannelsFor: aStep
 									collect: #name
 									thenReject: [ :n | n = #guix ]) ].
 			groups associations collect: [ :each |
-				GxPackageGroup new
+				GxPackageOutputGroup new
 					packages: each value;
 					name: each key;
 					yourself ] ];

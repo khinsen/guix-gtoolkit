@@ -8,5 +8,5 @@ initializePackgesFromJSON
 	packages := Array new: numberOfPackages.
 	numberOfPackages to: 1 by: -1 do: [ :index |
 		packages at: index put:
-			(GxPackage new guix: self; packageDataJSON: (packageInfo at: numberOfPackages - index + 1))].
+			(GxPackage new guix: self; packageData: (packageInfo at: numberOfPackages - index + 1))].
 	packages := GxPackageGroup new packages: packages.

@@ -5,12 +5,10 @@ gtOutputsFor: aView
 	view := aView columnedList
 		title: 'Outputs';
 		priority: 6;
-		items: [ self storePaths associations ];
-		column: 'Name' text: #key;
-		column: 'Store path' text: #value;
-		column: 'Available' text: [ :each |
-			each value asFileReference isDirectory ];
-		send: [ :each | each value asFileReference ];
+		items: [ outputs ];
+		column: 'Name' text: #output;
+		column: 'Store path' text: #storePath;
+		column: 'Available' text: #isInStore;
 		updateWhen: GxPackageBuilt in: [ guix announcer ].
 	self isInStore ifFalse: [
 		view

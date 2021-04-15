@@ -1,3 +1,3 @@
 accessing
 specification
-	^ name, '@', version
+	^ (name, '@', version) asString

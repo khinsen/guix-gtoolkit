@@ -1,9 +1,10 @@
 inspecting
 gtCommandLineFor: aView
 	<gtView>
+	channels size > 1 ifTrue: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Command line';
-		priority: 5;
+		priority: 3;
 		stencil: [
 			BrEditorElement new
 				margin: (BlInsets all: 10);

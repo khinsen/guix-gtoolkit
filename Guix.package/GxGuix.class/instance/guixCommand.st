@@ -1,3 +1,4 @@
 accessing
 guixCommand
-	^ self class guixCommand
+	self isCurrent ifTrue: [ ^ self class guixCommand ].
+	

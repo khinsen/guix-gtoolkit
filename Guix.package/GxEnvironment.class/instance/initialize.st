@@ -1,4 +1,8 @@
 initialization
 initialize
-	packages := SortedCollection new.
-	packages sortBlock: [ :a :b | a name <= b name ].
+	packageOutputs := SortedCollection new.
+	packageOutputs sortBlock: [ :a :b |
+		| nameA nameB |
+		nameA := a package name.
+		nameB := b package name.
+		(nameA <= nameB) or: [ nameA = nameB and: [ a output <= b output ] ] ]

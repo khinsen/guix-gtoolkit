@@ -7,8 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"packages",
-		"name"
+		"name",
+		"packageOutputs"
 	],
-	"name" : "GxPackageGroup",
+	"name" : "GxPackageOutputGroup",
 	"type" : "normal"
 }

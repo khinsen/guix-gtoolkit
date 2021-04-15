@@ -6,9 +6,10 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packages",
-		"name"
+		"package",
+		"output",
+		"storePath"
 	],
-	"name" : "GxPackageGroup",
+	"name" : "GxPackageOutput",
 	"type" : "normal"
 }
