@@ -1,3 +1,3 @@
 accessing
 guix
-	^ guix
+	^ guix ifNil: [ guix := GxGuix for: channels ]

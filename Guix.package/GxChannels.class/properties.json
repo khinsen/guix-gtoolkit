@@ -7,7 +7,9 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"channels",
-		"channelHash"
+		"channelHash",
+		"packageOutputs",
+		"packageCatalog"
 	],
 	"name" : "GxChannels",
 	"type" : "normal"

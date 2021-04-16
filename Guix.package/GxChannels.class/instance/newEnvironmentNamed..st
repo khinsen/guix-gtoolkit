@@ -1,8 +1,8 @@
-operating
+environments
 newEnvironmentNamed: aString
 	| environment |
 	environment := GxEnvironment new
-						guix: self;
+						channels: self;
 						name: aString.
 	GxNamedEnvironments uniqueInstance add: environment.
-	environment
+	^ environment

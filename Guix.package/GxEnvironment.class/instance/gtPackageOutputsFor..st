@@ -10,12 +10,12 @@ gtPackageOutputsFor: aView
 		column: 'Output' text: #output;
 		actionStencil: [ :anElement |
 			GtSpotterDropdownButtonStencil new
-				object: self guix packageOutputs;
+				object: channels packageOutputs;
 				tooltip: 'Add Package Output';
 				icon: BrGlamorousVectorIcons add;
 				actOn: [ :anActOnEvent :anItem | 
 					self addPackageOutput: anItem.
 					anActOnEvent beActed ] ]
 		tooltip: 'Add Package';
-		updateWhen: GxEnvironmentModified in: guix announcer;
+		updateWhen: GxEnvironmentModified in: self guix announcer;
 		yourself

@@ -14,7 +14,7 @@ gtCommandLineFor: aView
 				editor: (BrTextEditor new
 					text: ( self commandLine asRopedText
 						glamorousRegularFontAndSize) ) ];
-		updateWhen: GxEnvironmentModified in: guix announcer;
+		updateWhen: GxEnvironmentModified in: self guix announcer;
 		actionButtonIcon: BrGlamorousVectorIcons clipboard
 				tooltip: 'Copy to clipboard'
 				action: [ Clipboard clipboardText: self commandLine ];

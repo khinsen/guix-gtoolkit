@@ -8,7 +8,7 @@ packageData: packageData
 				package: self;
 				output: each asSymbol ].
 	channels := (packageData at: #channels)
-		collect: [ :each | guix channels at: each ].
+		collect: [ :each | guix channels channelNamed: each ].
 	location := packageData at: #location.
 	location at: #file put: (location at: #file) asFileReference.
 	synopsis := packageData at: #synopsis.

@@ -1,3 +1,3 @@
 printing
 gtDisplayOn: aStream
-	aStream << 'Guix'
+	aStream << 'Guix Packages'

@@ -1,10 +1,9 @@
 inspecting
 gtChannelsFor: aView
 	<gtView>
-	^ aView columnedList
+	^ aView forward
 		title: 'Channels';
 		priority: 2;
-		items: [ channels values ];
-		column: 'Name' text: #name;
-		column: 'Commit' text: #commit;
+		object: [ channels ];
+		view: #gtChannelsFor:;
 		yourself
