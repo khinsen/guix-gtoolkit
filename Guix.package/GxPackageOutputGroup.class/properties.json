@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "Object",
-	"category" : "Guix-Core",
+	"category" : "Guix-Packages",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
