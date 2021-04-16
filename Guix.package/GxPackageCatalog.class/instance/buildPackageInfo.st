@@ -3,7 +3,7 @@ buildPackageInfo
 	| scriptFile process |
 	scriptFile := GxGuix cacheDirectory.
 	scriptFile writeStreamDo: [ :s | s << self packageInfoScript ].
-	process := self newGuixProcessWithArguments:
+	process := guix newGuixProcessWithArguments:
 				{ 'repl'. scriptFile fullName. self packageInfoFile fullName }.
 	process runAndWait.
 	scriptFile delete.

@@ -1,3 +1,3 @@
 accessing
 storePathsForPackage: aString
-	^ self runReplCommandAndParse: '(store-paths "', aString, '")'.
+	^ guix runReplCommandAndParse: '(store-paths "', aString, '")'.

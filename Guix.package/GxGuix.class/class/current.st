@@ -1,3 +1,3 @@
 instance creation
 current
-	^ self new
+	^ self for: GxChannels current

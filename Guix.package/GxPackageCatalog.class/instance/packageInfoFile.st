@@ -1,6 +1,3 @@
 channels
 packageInfoFile
-	| directory |
-	directory := FileLocator home / '.config' / 'guix-gtoolkit'.
-	directory ensureCreateDirectory.
-	^ directory / (self channelHash hex, '.json')
+	^  GxGuix cacheDirectory / (channels channelHash hex, '.json')

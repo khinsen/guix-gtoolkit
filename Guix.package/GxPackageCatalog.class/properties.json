@@ -8,11 +8,7 @@
 	"instvars" : [
 		"packages",
 		"channels",
-		"replProcess",
-		"worker",
-		"tasks",
-		"announcer",
-		"events"
+		"guix"
 	],
 	"name" : "GxPackageCatalog",
 	"type" : "normal"
