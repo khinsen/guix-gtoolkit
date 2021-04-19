@@ -1,3 +1,3 @@
 channels
 packageInfoFile
-	^  GxGuix cacheDirectory / (channels channelHash hex, '.json')
+	^  GxGuix cacheDirectory / (channels channelHash hex, '-packages.json')
