@@ -1,2 +1,4 @@
 comparing
-ce: 36576223
+= otherChannel
+	self species = otherChannel species ifFalse: [ ^ false ].
+	^ (name = otherChannel name) and: [ commit = otherChannel commit ]
