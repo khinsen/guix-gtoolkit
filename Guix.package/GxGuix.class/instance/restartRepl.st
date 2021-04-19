@@ -1,6 +1,7 @@
 REPL
 restartRepl
-	replProcess isRunning
-		ifTrue: [ [ replProcess terminate ] on: Error do: [] ].
+	replProcess ifNotNil: [ :p |
+		p isRunning
+			ifTrue: [ [ p terminate ] on: Error do: [] ] ].
 	replProcess := nil.
 	self startRepl

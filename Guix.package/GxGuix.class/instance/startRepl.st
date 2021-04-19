@@ -5,7 +5,7 @@ startRepl
 	portString := self replProcessPort asString.
 	(self class activeReplProcesses select: [ :each |
 		portString = (each envVariables at: 'GxGuixPort') ])
-		ifNotEmpty: [ :p | replProcess := p. ^ self ].
+		ifNotEmpty: [ :p | replProcess := p first. ^ self ].
 	replProcess :=
 		self newGuixProcessWithArguments:
 			{ 'repl'. '-t'. 'machine'. '--listen=tcp:', portString }.

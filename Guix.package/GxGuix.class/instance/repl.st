@@ -1,3 +1,4 @@
 accessing
 repl
-	^ replProcess ifNil: [ self startRepl. replProcess ]
+	replProcess ifNil: [ self startRepl ].
+	replProcess
