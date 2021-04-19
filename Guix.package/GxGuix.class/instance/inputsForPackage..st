@@ -8,6 +8,6 @@ inputsForPackage: aString
 			ifFalse: [ input first = #source
 						ifTrue: [ input second asUrl ]
 						ifFalse: [ input second ] ] ].
-	directInputs := inputs first collect: process.
-	buildInputs := inputs second collect: process.
+	directInputs := inputs first asSet collect: process.
+	buildInputs := inputs second asSet collect: process.
 	^ { directInputs. buildInputs }

@@ -6,7 +6,7 @@ gtDefinitionFor: aView
 	sourceFile isFile ifFalse: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Definition';
-		priority: 7;
+		priority: 10;
 		stencil: [
 			| source start end |
 			source := sourceFile contents.
