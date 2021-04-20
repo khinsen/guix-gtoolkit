@@ -1,4 +1,3 @@
 packages
 packageOutputs
-	^ packageOutputs ifNil: [
-		packageOutputs := self packageCatalog packageOutputs ]
+	^ self packageCatalog packageOutputs

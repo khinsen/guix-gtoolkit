@@ -1,4 +1,3 @@
 packages
 packageCatalog
-	^ packageCatalog ifNil: [
-		packageCatalog := GxPackageCatalog for: self ]
+	^ (GxGuix for: self) packageCatalog

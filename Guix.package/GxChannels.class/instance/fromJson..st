@@ -8,4 +8,7 @@ fromJson: channelData
 			url: (each at: #url);
 			commit: (each at: #commit);
 			yourself.
-			channels at: channel name put: channel ]
+		channel beReadOnlyObject.
+	channels at: channel name put: channel ].
+	self computeChannelHash.	
+	self beReadOnlyObject.

@@ -11,7 +11,8 @@
 		"worker",
 		"tasks",
 		"announcer",
-		"events"
+		"events",
+		"packageCatalog"
 	],
 	"name" : "GxGuix",
 	"type" : "normal"
