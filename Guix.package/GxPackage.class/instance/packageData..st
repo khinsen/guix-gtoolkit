@@ -15,3 +15,5 @@ packageData: packageData
 	description := packageData at: #description.
 	licenses := packageData at: #licenses.
 	homePage := packageData at: #'home-page'.
+	packageData at: #'store-paths' ifPresent: [ :sp |
+		storePaths := sp ]
