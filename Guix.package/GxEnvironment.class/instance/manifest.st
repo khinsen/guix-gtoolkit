@@ -1,6 +1,3 @@
-scheme
+inspecting
 manifest
-	^ String streamContents: [ :s |
-		s << '(specification->manifest ''('; cr.
-		packageOutputs do: [ :each | s << '  "'; << each specification; << '"'; cr ].
-		s << '))'; cr ]
+	^ String streamContents: [ :s | self writeManifestTo: s ]

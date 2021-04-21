@@ -7,7 +7,7 @@ gtManifestFor: aView
 		object: [ self manifest ];
 		view: #gtStringFor:;
 		actionButtonIcon: BrGlamorousVectorIcons clipboard
-				tooltip: 'Copy to clipboard'
-				action: [ Clipboard clipboardText: self commandLine ];
+			tooltip: 'Copy to clipboard'
+			action: [ Clipboard clipboardText: self manifest ];
 		actionUpdateButton;
 		yourself

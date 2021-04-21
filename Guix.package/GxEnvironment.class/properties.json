@@ -9,7 +9,8 @@
 		"guix",
 		"name",
 		"channels",
-		"packageOutputs"
+		"packageOutputs",
+		"directory"
 	],
 	"name" : "GxEnvironment",
 	"type" : "normal"

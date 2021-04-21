@@ -3,6 +3,5 @@ newEnvironmentNamed: aString
 	| environment |
 	environment := GxEnvironment new
 						channels: self;
-						name: aString.
-	GxNamedEnvironments uniqueInstance add: environment.
+						persistAt: GxGuix environmentDirectory / aString.
 	^ environment
