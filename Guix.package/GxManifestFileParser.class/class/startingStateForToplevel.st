@@ -1,0 +1,3 @@
+generated
+startingStateForToplevel
+	^ 1

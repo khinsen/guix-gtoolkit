@@ -1,11 +1,11 @@
 {
 	"commentStamp" : "",
-	"super" : "SmaCCScanner",
+	"super" : "SmaCCParser",
 	"category" : "Guix-Environments",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [ ],
-	"name" : "SomeScanner",
+	"name" : "GxManifestFileParser",
 	"type" : "normal"
 }

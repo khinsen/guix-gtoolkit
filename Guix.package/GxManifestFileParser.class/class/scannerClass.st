@@ -1,3 +1,3 @@
 generated
 scannerClass
-	^GxChannelFileScanner
+	^GxManifestFileScanner

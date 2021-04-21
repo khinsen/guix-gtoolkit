@@ -1,6 +1,6 @@
 persistence
 writeManifestTo: s
-		s << '(specification->manifest ''('; lf.
+		s << '(specifications->manifest ''('; lf.
 		packageOutputs do: [ :each |
 			s << '  "'; << each specification; << '"'; lf ].
 		s << '))'; lf
