@@ -1,13 +1,13 @@
 {
 	"commentStamp" : "",
 	"super" : "Announcement",
-	"category" : "Guix-Announcements",
+	"category" : "Guix-Environments",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
 		"environment"
 	],
-	"name" : "GxEnvironmentModified",
+	"name" : "GxEnvironmentModifiedEvent",
 	"type" : "normal"
 }

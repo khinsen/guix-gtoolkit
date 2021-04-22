@@ -1,3 +1,3 @@
-accessing
+enumerating
 size
 	^ channels size

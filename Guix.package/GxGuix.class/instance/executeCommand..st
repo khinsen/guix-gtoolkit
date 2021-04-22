@@ -3,7 +3,7 @@ executeCommand: anArray
 	| tempFileReference output process |
 	tempFileReference := FileLocator temp / 'guix_command_stdout.txt'.
 	self assert: tempFileReference exists not.
-	process := self newGuixProcessWithArguments: anArray.
+	process := self class newGuixProcessWithArguments: anArray.
 	process
 		redirectStdoutTo: (StandardFileStream newFileNamed:  tempFileReference fullName);
 		runAndWait.

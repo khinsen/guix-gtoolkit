@@ -1,3 +1,3 @@
 comparing
 hash
-	^ channels hash
+	^ channelHash hash

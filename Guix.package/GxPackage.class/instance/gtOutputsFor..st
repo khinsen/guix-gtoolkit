@@ -9,7 +9,7 @@ gtOutputsFor: aView
 		column: 'Name' text: #output;
 		column: 'Store path' text: #storePath;
 		column: 'Available' text: #isInStore;
-		updateWhen: GxPackageBuilt in: [ guix announcer ].
+		updateWhen: GxPackageBuiltEvent in: [ guix announcer ].
 	self isInStore ifFalse: [
 		view
 			actionButtonIcon: BrGlamorousVectorIcons repair
