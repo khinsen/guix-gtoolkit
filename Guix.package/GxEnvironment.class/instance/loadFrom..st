@@ -4,7 +4,7 @@ loadFrom: aFileReference
 	self assert: aFileReference isDirectory.
 	directory := aFileReference.
 	self name: directory basename.
-	self channels: (GxChannelFileParser parseFile: directory / 'channels.scm').
+	self channels: (GxChannelFileParser parseFile: self channelFile).
 	packageOutputCatalog := channels packageOutputs.
-	(GxManifestFileParser parseFile: directory / 'manifest.scm') do: [ :each |
-		self addPackageOutput: (packageOutputCatalog lookup: each) ]
+	(GxManifestFileParser parseFile: self manifestFile)
+		do: [ :each | self addPackageOutput: (packageOutputCatalog lookup: each) ]

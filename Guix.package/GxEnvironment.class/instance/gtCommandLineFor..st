@@ -1,7 +1,6 @@
 inspecting
 gtCommandLineFor: aView
 	<gtView>
-	channels size > 1 ifTrue: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Command line';
 		priority: 3;

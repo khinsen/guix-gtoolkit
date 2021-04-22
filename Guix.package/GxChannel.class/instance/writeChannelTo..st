@@ -1,5 +1,5 @@
 accessing
-writeSchemeDefinitionTo: aStream
+writeChannelTo: aStream
 	aStream
 		<< '  (channel'; lf;
 		<< '    (name '''; << name; << ')'; lf;

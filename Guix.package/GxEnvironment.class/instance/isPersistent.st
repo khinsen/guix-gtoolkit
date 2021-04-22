@@ -1,0 +1,3 @@
+testing
+isPersistent
+	^ directory isNotNil

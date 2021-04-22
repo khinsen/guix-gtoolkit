@@ -1,6 +1,6 @@
 persistence
 saveChannels
-	directory ifNotNil: [
-		directory / 'channels.scm'
+	self isPersistent ifTrue: [
+		self channelFile
 			writeStreamDo: [ :s |
-				channels writeSchemeDefinitionTo: s ] ]
+				channels writeChannelsTo: s ] ]

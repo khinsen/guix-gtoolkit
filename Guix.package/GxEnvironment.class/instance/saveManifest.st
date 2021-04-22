@@ -1,6 +1,6 @@
 persistence
 saveManifest
-	directory ifNotNil: [
-		directory / 'manifest.scm'
+	self isPersistent ifTrue: [
+		self manifestFile
 			writeStreamDo: [ :s |
 				self writeManifestTo: s ] ]

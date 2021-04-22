@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "",
+	"super" : "OSSUnixSubprocess",
+	"category" : "Guix-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"gxArgumentPrefix",
+		"gxCommand",
+		"gxArguments"
+	],
+	"name" : "GxSubprocess",
+	"type" : "normal"
+}
