@@ -5,7 +5,7 @@ gtAttributesFor: aView
 		title: 'Attributes';
 		priority: 0;
 		object: [ Dictionary
-					with: #name -> name
-					with: #url -> url
-					with: #commit -> commit ]
+					with: #name -> self name
+					with: #url -> self url
+					with: #commit -> self commit ]
 		yourself

@@ -2,6 +2,6 @@ accessing
 writeChannelTo: aStream
 	aStream
 		<< '  (channel'; lf;
-		<< '    (name '''; << name; << ')'; lf;
-		<< '    (url "'; << url; << '")'; lf;
-		<< '    (commit "'; << commit; << '"))'.
+		<< '    (name '''; << self name; << ')'; lf;
+		<< '    (url "'; << self url; << '")'; lf;
+		<< '    (commit "'; << self commit; << '"))'.

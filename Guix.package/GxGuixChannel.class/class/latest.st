@@ -7,7 +7,7 @@ latest
 	| latestCommitOnMaster |
 	latestCommitOnMaster :=
 		(ZnClient new
-			url: self gitUrl, '/refs/heads/master';
+			url: self new url, '/refs/heads/master';
 			get;
 			response)
 		entity contents allButLast asString.
