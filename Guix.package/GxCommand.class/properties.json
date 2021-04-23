@@ -1,5 +1,5 @@
 {
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"super" : "GtUnixSubprocess",
 	"category" : "Guix-Core",
 	"classinstvars" : [ ],
