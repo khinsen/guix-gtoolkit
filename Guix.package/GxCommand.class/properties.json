@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GtUnixSubprocess",
+	"category" : "Guix-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"gxEnvironment"
+	],
+	"name" : "GxCommand",
+	"type" : "normal"
+}
