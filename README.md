@@ -84,8 +84,7 @@ Environments can be ephemeral or persistent. Ephemeral environments are typicall
 ```smalltalk
 env := GxChannels current newEnvironment
 	addPackageOutput: 'python';
-	addPackageOutput: 'python-numpy';
-	yourself.
+	addPackageOutput: 'python-numpy'.
 (env command: 'python3' arguments: #('-c' 'import numpy; print(numpy.__version__)'))
 	runAndWait;
 	stdout
@@ -98,4 +97,18 @@ which creates an instance of `OSSUnixSubprocess` (see the [OSSubprocess](https:/
  1. The subprocess does not inherit any environment variables.
  2. The command/arguments combination is modified to include the required invocation of Guix.
 
+Persistent environments are identified by a name:
+```smalltalk
+env := (GxChannels current newEnvironmentNamed: 'Python')
+	addPackageOutput: 'python';
+	addPackageOutput: 'python-numpy'
+```
+Their definitions are stored in the filesystem (under `$HOME/.config/guix-environments`), in one directory per environment, each containing two files:
+ - `channels.scm` to define the channels
+ - `manifest.scm` to define the packages
+These two files contain Scheme code compatible with the Guix command line tool, meaning that persistent environments can be used from the terminal and also in shell scripts.
 
+There is a rudimentary editor for persistent environments, available by inspecting
+```smalltalk
+GxPersistentEnvironments new
+```
