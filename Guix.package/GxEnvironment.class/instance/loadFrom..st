@@ -7,4 +7,4 @@ loadFrom: aFileReference
 	self channels: (GxChannelFileParser parseFile: self channelFile).
 	packageOutputCatalog := channels packageOutputs.
 	(GxManifestFileParser parseFile: self manifestFile)
-		do: [ :each | self addPackageOutput: (packageOutputCatalog lookup: each) ]
+		do: [ :each | self addPackageOutput: each ]
