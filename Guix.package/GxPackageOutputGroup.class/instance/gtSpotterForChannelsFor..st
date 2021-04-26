@@ -14,6 +14,7 @@ gtSpotterForChannelsFor: aStep
 									thenReject: [ :n | n = #guix ]) ].
 			groups associations collect: [ :each |
 				GxPackageOutputGroup new
+					guix: self guix;
 					packages: each value;
 					name: each key;
 					yourself ] ];

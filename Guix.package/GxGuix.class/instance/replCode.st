@@ -9,8 +9,40 @@ replCode
              (guix channels)
              (guix describe)
              (guix licenses)
+             (srfi srfi-11)
              ((ice-9 match)   #:select (match))
              ((ice-9 format)  #:select (format)))
+
+(define (package->specification package)
+  (format #f "~a@~a"
+          (package-name package)
+          (package-version package)))
+
+(define (shortest-unique-specification package)
+  (let ((full-specification (package->specification package))
+        (matches (map package->specification
+                      (find-packages-by-name (package-name package)))))
+    (if (null? matches)
+        #f
+        (let loop ((m matches)
+                   (l (string-length (package-name package))))
+          (cond
+           ((equal? (car m) full-specification)
+            (substring full-specification 0 l))
+           ((null? (cdr m))
+            #f)
+           (else
+            (loop (cdr m)
+                  (+ 1 (string-compare (car m) (cadr m)
+                                       (lambda (n) n)
+                                       (lambda (n) n)
+                                       (lambda (n) n))))))))))
+
+(define (find-best-matching-package name version)
+  (let ((matches (find-packages-by-name name version)))
+    (cond
+     ((null? matches) #f)
+     (else (package->specification (car matches))))))
 
 (define (package-store-paths package)
   (let* ((drv (with-store store
@@ -33,6 +65,7 @@ replCode
 		     license-field)))
     `((name . ,(package-name package))
       (version . ,(package-version package))
+      (shortest-specification . ,(shortest-unique-specification package))
       (outputs . ,(list->vector (package-outputs package)))
       (store-paths . ,(package-store-paths package))
       (channels . ,(list->vector (map channel-name (package-channels package))))
@@ -46,15 +79,11 @@ replCode
       (home-page . ,(package-home-page package)))))
 
 (define (minimal-package-specification package)
-  (define name-and-version
-    (format #f "~a@~a"
-            (package-name package)
-            (package-version package)))
   (if (null? (find-packages-by-name
                (package-name package)
                (package-version package)))
       (list ''package-data (list->vector (full-package-data package)))
-      (list ''package name-and-version)))
+      (list ''package (package->specification package))))
 
 (define (input->specification input)
   (match input
@@ -72,4 +101,13 @@ replCode
     (list
      (list->vector (map input->specification direct-inputs))
      (list->vector (map input->specification build-inputs)))))
+
+(define (find-package-output specification)
+  (let-values (((package output)
+                (specification->package+output specification)))
+    (and package
+         (format #f "~a@~a:~a"
+                 (package-name package)
+                 (package-version package)
+                 output))))
 '

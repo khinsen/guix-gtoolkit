@@ -1,4 +1,4 @@
 accessing
 announce: anAnnouncement
-	announcer announce: anAnnouncement.
+	self announcer announce: anAnnouncement.
 	(GxSignal on: anAnnouncement) emit.

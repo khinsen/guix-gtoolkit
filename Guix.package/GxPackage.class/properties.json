@@ -16,7 +16,8 @@
 		"location",
 		"guix",
 		"storePaths",
-		"channels"
+		"channels",
+		"shortestSpecification"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"

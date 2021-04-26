@@ -3,6 +3,6 @@ initialize
 	packageOutputs := SortedCollection new.
 	packageOutputs sortBlock: [ :a :b |
 		| nameA nameB |
-		nameA := a package name.
-		nameB := b package name.
+		nameA := a value package name.
+		nameB := b value package name.
 		(nameA <= nameB) or: [ nameA = nameB and: [ a output <= b output ] ] ]

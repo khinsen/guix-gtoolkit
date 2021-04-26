@@ -5,9 +5,10 @@ gtPackageOutputsFor: aView
 		title: 'Package Outputs';
 		priority: 1;
 		items: [ packageOutputs ];
-		column: 'Name' text: [ :each | each package name ];
-		column: 'Version' text: [ :each | each package version ];
-		column: 'Output' text: #output;
+		column: 'Specification' text: #key;
+		column: 'Name' text: [ :each | each value package name ];
+		column: 'Version' text: [ :each | each value package version ];
+		column: 'Output' text: [ :each | each value output ];
 		actionStencil: [ :anElement |
 			GtSpotterDropdownButtonStencil new
 				object: channels packageOutputs;

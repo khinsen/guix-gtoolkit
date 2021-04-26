@@ -2,6 +2,7 @@ initialization
 packageData: packageData
 	name := (packageData at: #name) asSymbol.
 	version := packageData at: #version.
+	shortestSpecification := packageData at: #'shortest-specification'.
 	outputs := (packageData at: #outputs)
 		collect: [ :each |
 			GxPackageOutput new

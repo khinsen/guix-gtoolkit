@@ -12,6 +12,31 @@ packageInfoScript
  (guix utils)
  (json))
 
+(define (package->specification package)
+  (format #f "~a@~a"
+          (package-name package)
+          (package-version package)))
+
+(define (shortest-specification package)
+  (let ((full-specification (package->specification package))
+        (matches (map package->specification
+                      (find-packages-by-name (package-name package)))))
+    (if (null? matches)
+        #f
+        (let loop ((m matches)
+                   (l (string-length (package-name package))))
+          (cond
+           ((equal? (car m) full-specification)
+            (substring full-specification 0 l))
+           ((null? (cdr m))
+            #f)
+           (else
+            (loop (cdr m)
+                  (+ 1 (string-compare (car m) (cadr m)
+                                       (lambda (n) n)
+                                       (lambda (n) n)
+                                       (lambda (n) n))))))))))
+
 (define (package-info specification)
   (let*
       ((package (specification->package specification))
@@ -23,6 +48,7 @@ packageInfoScript
     `((name . ,(package-name package))
       (version . ,(package-version package))
       (outputs . ,(list->vector (package-outputs package)))
+      (shortest-specification . ,(shortest-specification package))
       (channels . ,(list->vector (map channel-name (package-channels package))))
       (location . ((file . ,(search-path %load-path (location-file location)))
                    (line . ,(location-line location))

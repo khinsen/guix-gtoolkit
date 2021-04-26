@@ -1,6 +1,6 @@
 persistence
 environmentDirectory
 	| directory |
-	directory := self configDirectory / 'environments'.
+	directory := FileLocator home / '.config' / 'guix-environments'.
 	directory ensureCreateDirectory.
 	^ directory
