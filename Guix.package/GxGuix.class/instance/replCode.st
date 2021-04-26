@@ -66,6 +66,8 @@ replCode
     `((name . ,(package-name package))
       (version . ,(package-version package))
       (shortest-specification . ,(shortest-unique-specification package))
+      (hidden . ,(->bool (hidden-package? package)))
+      (deprecated . ,(->bool (package-superseded package)))
       (outputs . ,(list->vector (package-outputs package)))
       (store-paths . ,(package-store-paths package))
       (channels . ,(list->vector (map channel-name (package-channels package))))

@@ -1,10 +1,10 @@
 inspecting
-gtPackagesFor: aView
+gtHiddenPackagesFor: aView
 	<gtView>
 	^ aView columnedList
-		title: 'Packages';
-		priority: 1;
-		items: [ visiblePackages ];
+		title: 'Hidden packages';
+		priority: 3;
+		items: [ packages select: #isHidden ];
 		column: 'Name' text: #name;
 		column: 'Version' text: #version;
 		yourself

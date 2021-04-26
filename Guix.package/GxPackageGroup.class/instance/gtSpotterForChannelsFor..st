@@ -7,7 +7,7 @@ gtSpotterForChannelsFor: aStep
 		allCandidates: [
 			| groups |
 			groups :=
-				(packages select: [ :each | each channels size > 1 ])
+				(visiblePackages select: [ :each | each channels size > 1 ])
 					groupedBy: [ :aPackage |
 					', ' join: (aPackage channels
 									collect: #name

@@ -37,18 +37,19 @@ packageInfoScript
                                        (lambda (n) n)
                                        (lambda (n) n))))))))))
 
-(define (package-info specification)
+(define (package-info package)
   (let*
-      ((package (specification->package specification))
-       (location (package-location package))
+      ((location (package-location package))
        (license-field (package-license package))
        (licenses (if (license? license-field)
 		     (list license-field)
 		     license-field)))
     `((name . ,(package-name package))
       (version . ,(package-version package))
-      (outputs . ,(list->vector (package-outputs package)))
       (shortest-specification . ,(shortest-specification package))
+      (hidden . ,(->bool (hidden-package? package)))
+      (deprecated . ,(->bool (package-superseded package)))
+      (outputs . ,(list->vector (package-outputs package)))
       (channels . ,(list->vector (map channel-name (package-channels package))))
       (location . ((file . ,(search-path %load-path (location-file location)))
                    (line . ,(location-line location))
@@ -66,15 +67,11 @@ packageInfoScript
   (lambda ()
     (scm->json
      (list->vector
-      (fold-available-packages
-       (lambda* (name version result
-		      #:key outputs location
-		      supported? deprecated?
-		      #:allow-other-keys)
-         (if (and supported? (not deprecated?))
-	     (cons (package-info (format #f "~a@~a" name version))
-	           result)
-	     result))
-       ''()))))
+      (fold-packages
+       (lambda (package result)
+	 (cons (package-info package)
+	       result))
+       ''()
+       #:select? supported-package?))))
   #:encoding "UTF-8")
 '

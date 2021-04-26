@@ -11,5 +11,8 @@ initializePackages
 		| package |
 		package := GxPackage new guix: guix; packageData: (packageInfo at: numberOfPackages - index + 1).
 		packages at: index put: package.
-		packagesBySpecification at: package specification put: package ].
+		(package isHidden or: [ package isDeprecated ]) ifFalse: [
+			packagesBySpecification at: package specification
+				ifPresent: [ self error: 'Duplicate package ', package specification ]
+				ifAbsentPut: [ package ] ] ].
 	packages := GxPackageGroup new packages: packages.

@@ -17,7 +17,9 @@
 		"guix",
 		"storePaths",
 		"channels",
-		"shortestSpecification"
+		"shortestSpecification",
+		"isDeprecated",
+		"isHidden"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"

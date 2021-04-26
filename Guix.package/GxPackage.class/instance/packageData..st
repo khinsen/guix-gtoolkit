@@ -16,5 +16,7 @@ packageData: packageData
 	description := packageData at: #description.
 	licenses := packageData at: #licenses.
 	homePage := packageData at: #'home-page'.
+	isHidden := packageData at: #hidden ifAbsent: [ true ].
+	isDeprecated := packageData at: #deprecated ifAbsent: [ false ].
 	packageData at: #'store-paths' ifPresent: [ :sp |
 		storePaths := sp ]

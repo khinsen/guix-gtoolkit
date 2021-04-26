@@ -4,7 +4,7 @@ gtSpotterForPackageHomePagesFor: aStep
 	^ aStep listProcessor
 		priority: 3;
 		title: 'Home pages';
-		allCandidates: [ packages ];
+		allCandidates: [ visiblePackages ];
 		filter: GtFilterSubstring;
 		candidatesLimit: 7;
 		itemName: #homePage
