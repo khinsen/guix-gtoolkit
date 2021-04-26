@@ -55,3 +55,22 @@ Finally, you can access the more recent commit in the Guix channel via
 GxGuixChannel latest
 ```
 Watch out though: the latest commit typically changes several times a day!
+
+You can combine channels by concatenation:
+```smalltalk
+guix := GxGuixChannel latest.
+guixPast := GxChannel name: 'guix-past' url: 'https://gitlab.inria.fr/guix-hpc/guix-past' commit: '0f892e4f9c37c385ecde66547d5c56d096b7109c'.
+twoChannels := guix, guixPast
+```
+
+## Exploring packages
+
+Starting from a set of channels, you can obtain a package catalog with many browsing features:
+```smalltalk
+GxChannels current packageCatalog
+```
+
+The looking-glass icon gives access to a powerful search engine, don't miss it!
+
+![package-catalog](https://user-images.githubusercontent.com/94934/116088801-7dc66980-a6a2-11eb-8775-44f7a41aaf06.png)
+
