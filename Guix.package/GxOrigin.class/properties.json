@@ -1,17 +1,13 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "GxObject",
 	"category" : "Guix-Packages",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packages",
-		"channels",
-		"guix",
-		"packagesBySpecification",
-		"guixObjects"
+		"uri"
 	],
-	"name" : "GxPackageCatalog",
+	"name" : "GxOrigin",
 	"type" : "normal"
 }

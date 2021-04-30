@@ -6,12 +6,8 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"packages",
-		"channels",
-		"guix",
-		"packagesBySpecification",
-		"guixObjects"
+		"guix"
 	],
-	"name" : "GxPackageCatalog",
+	"name" : "GxObject",
 	"type" : "normal"
 }

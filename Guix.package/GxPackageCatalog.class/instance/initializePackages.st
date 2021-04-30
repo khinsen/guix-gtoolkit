@@ -1,18 +1,20 @@
 initialization
 initializePackages
-	| jsonFile packageInfo numberOfPackages |
+	| jsonFile objectInfo numberOfObjects |
 	jsonFile := self packageInfoFile.
-	jsonFile isFile ifFalse: [ self buildPackageInfo ].
-	packageInfo := (NeoJSONReader on: jsonFile readStream) next.
-	numberOfPackages := packageInfo size.
-	packages := Array new: numberOfPackages.
+	jsonFile isFile ifFalse: [ self buildObjectInfo ].
+	objectInfo := (NeoJSONReader on: jsonFile readStream) next.
+	numberOfObjects := objectInfo size.
+	guixObjects := Array new: numberOfObjects.
 	packagesBySpecification := Dictionary new.
-	numberOfPackages to: 1 by: -1 do: [ :index |
-		| package |
-		package := GxPackage new guix: guix; packageData: (packageInfo at: numberOfPackages - index + 1).
-		packages at: index put: package.
-		(package isHidden or: [ package isDeprecated ]) ifFalse: [
-			packagesBySpecification at: package specification
-				ifPresent: [ self error: 'Duplicate package ', package specification ]
-				ifAbsentPut: [ package ] ] ].
-	packages := GxPackageGroup new packages: packages.
+	numberOfObjects to: 1 by: -1 do: [ :index |
+		| item |
+		item := GxObject
+					fromJson: (objectInfo at: numberOfObjects - index + 1)
+					forGuix: guix.
+		guixObjects at: index put: item.
+		(item isPackage and: [ item isHidden not ]) ifTrue: [
+			packagesBySpecification at: item specification
+				ifPresent: [ self error: 'Duplicate package ', item specification ]
+				ifAbsentPut: [ item ] ] ].
+	packages := GxPackageGroup new packages: (guixObjects select: #isPackage).

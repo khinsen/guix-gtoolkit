@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "GxObject",
 	"category" : "Guix-Packages",
 	"classinstvars" : [ ],
 	"pools" : [ ],
@@ -14,12 +14,9 @@
 		"description",
 		"synopsis",
 		"location",
-		"guix",
 		"storePaths",
 		"channels",
-		"shortestSpecification",
-		"isDeprecated",
-		"isHidden"
+		"shortestSpecification"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"

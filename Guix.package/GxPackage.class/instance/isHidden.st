@@ -1,3 +1,3 @@
 accessing
 isHidden
-	^ isHidden
+	^ shortestSpecification isNil

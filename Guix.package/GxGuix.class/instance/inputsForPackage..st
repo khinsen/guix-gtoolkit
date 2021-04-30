@@ -5,7 +5,7 @@ inputsForPackage: aString
 	processPackageSpecification := [ :input |
 		channels packageCatalog lookup: input ].
 	processPackageData := [ :input |
-		GxPackage new guix: self; packageData: input ].
+		GxPackage new guix: self; fromJson: input ].
 	processSource := [ :input | input asUrl ].
 	processors :=
 		Dictionary
