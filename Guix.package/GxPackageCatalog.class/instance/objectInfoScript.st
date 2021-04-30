@@ -11,6 +11,7 @@ objectInfoScript
  (guix licenses)
  (guix utils)
  ((ice-9 match))
+ (srfi srfi-1)
  (srfi srfi-43)
  (json))
 
@@ -20,28 +21,26 @@ objectInfoScript
           (package-version package)))
 
 (define (shortest-specification package)
-  (if (hidden-package? package)
-      #f
-      (let ((full-specification (package->specification package))
-            (matches (map package->specification
-                          (find-packages-by-name (package-name package)))))
-        (if (null? matches)
-            #f
-            (let loop ((m matches)
-                       (l (string-length (package-name package))))
-              (cond
-               ((equal? (car m) full-specification)
-                (substring full-specification 0 l))
-               ((null? (cdr m))
-                #f)
-               (else
-                (loop (cdr m)
-                      (+ 1 (string-compare (car m) (cadr m)
-                                           (lambda (n) n)
-                                           (lambda (n) n)
-                                           (lambda (n) n)))))))))))
+  (let ((full-specification (package->specification package))
+        (matches (map package->specification
+                      (find-packages-by-name (package-name package)))))
+    (if (null? matches)
+        #f
+        (let loop ((m matches)
+                   (l (string-length (package-name package))))
+          (cond
+           ((equal? (car m) full-specification)
+            (substring full-specification 0 l))
+           ((null? (cdr m))
+            #f)
+           (else
+            (loop (cdr m)
+                  (+ 1 (string-compare (car m) (cadr m)
+                                       (lambda (n) n)
+                                       (lambda (n) n)
+                                       (lambda (n) n))))))))))
 
-(define (package-info package inputs)
+(define (package-info package inputs findable?)
   (let*
       ((location (package-location package))
        (license-field (package-license package))
@@ -52,7 +51,9 @@ objectInfoScript
     `((type . package)
       (name . ,(package-name package))
       (version . ,(package-version package))
-      (shortest-specification . ,(shortest-specification package))
+      (shortest-specification . ,(and findable?
+                                      (not (hidden-package? package))
+                                      (shortest-specification package)))
       (outputs . ,(list->vector (package-outputs package)))
       (channels . ,(list->vector (map channel-name (package-channels package))))
       (location . ((file . ,(search-path %load-path (location-file location)))
@@ -72,14 +73,18 @@ objectInfoScript
   `((type . file)
     (filename . ,filename)))
 
-(define accessible-packages
+(define available-packages
   (fold-packages
    (lambda (package result)
      (cons package result))
    ''()
    #:select? (lambda (p) (and (supported-package? p)
                               (not (package-superseded p))))))
-(define closure (package-closure accessible-packages))
+(define available-package-count (length available-packages))
+(define closure
+  (delete-duplicates
+   (append available-packages
+           (package-closure available-packages))))
 
 (define package->index (make-hash-table 20000))
 (let loop ((index 0)
@@ -125,7 +130,9 @@ objectInfoScript
      (vector-concatenate
       (list
        (vector-map (lambda (i p)
-                     (package-info p (package-input-indices p)))
+                     (package-info p
+                                   (package-input-indices p)
+                                   (< i available-package-count)))
                    index->package)
        (reverse-list->vector reverse-input-list)))))
   #:encoding "UTF-8")
