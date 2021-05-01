@@ -1,3 +1,3 @@
 accessing
 guix
-	^ guix
+	^ catalog guix

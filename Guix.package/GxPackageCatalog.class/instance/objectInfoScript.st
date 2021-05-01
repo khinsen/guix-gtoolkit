@@ -79,27 +79,21 @@ objectInfoScript
      (cons package result))
    ''()
    #:select? (lambda (p) (and (supported-package? p)
+                              (not (hidden-package? p))
                               (not (package-superseded p))))))
 (define available-package-count (length available-packages))
-(define closure
-  (delete-duplicates
-   (append available-packages
-           (package-closure available-packages))))
+(define index->package
+  (list->vector
+    (delete-duplicates
+     (append available-packages
+             (package-closure available-packages)))))
 
-(define package->index (make-hash-table 20000))
-(let loop ((index 0)
-           (packages closure))
-  (unless (null? packages)
-    (let ((p (car packages)))
-      (hash-set! package->index p index)
-      (loop (+ 1 index) (cdr packages)))))
-(define index->package (make-vector (hash-count (const #t) package->index)))
-(hash-for-each (lambda (p i)
-                 (vector-set! index->package i p))
-               package->index)
+(define input->index (make-hash-table 40000))
+(vector-for-each (lambda (i p)
+                   (hash-set! input->index p i))
+                 index->package)
 
-(define input->index (make-hash-table 10000))
-(define current-input-index 0)
+(define current-input-index (vector-length index->package))
 (define reverse-input-list ''())
 
 (define (inputs->indices inputs)
@@ -111,6 +105,8 @@ objectInfoScript
     (hash-ref input->index input))
   (define indices ''())
   (for-each (match-lambda
+              ((_ (? package? p) _ ...)
+               (set! indices (cons (hash-ref input->index p) indices)))
               ((_ (? origin? o) _ ...)
                (set! indices (cons (add-input (origin-info o)) indices)))
               ((_ (? string? s) _ ...)

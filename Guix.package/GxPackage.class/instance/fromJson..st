@@ -9,8 +9,9 @@ fromJson: aDictionary
 			GxPackageOutput new
 				package: self;
 				output: each asSymbol ].
+	inputs := (aDictionary at: #inputs).
 	channels := (aDictionary at: #channels)
-		collect: [ :each | guix channels channelNamed: each ].
+		collect: [ :each | catalog guix channels channelNamed: each ].
 	location := aDictionary at: #location.
 	location at: #file put: (location at: #file) asFileReference.
 	synopsis := aDictionary at: #synopsis.
