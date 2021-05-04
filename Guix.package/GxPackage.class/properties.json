@@ -17,7 +17,8 @@
 		"storePaths",
 		"channels",
 		"shortestSpecification",
-		"inputs"
+		"inputs",
+		"source"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"

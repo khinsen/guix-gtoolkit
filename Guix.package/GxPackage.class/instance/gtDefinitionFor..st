@@ -6,16 +6,16 @@ gtDefinitionFor: aView
 	sourceFile isFile ifFalse: [ ^ aView empty ].
 	^ aView explicit
 		title: 'Definition';
-		priority: 10;
+		priority: 4;
 		stencil: [
-			| source start end |
-			source := sourceFile contents.
-			start := (source indexForLine: (location at: #line) - 1)
+			| definitionSource start end |
+			definitionSource := sourceFile contents.
+			start := (definitionSource indexForLine: (location at: #line) - 1)
 							+ (location at: #column).
-			end := (source findCloseParenthesisFor: start) - 1.
-			source := source asRopedText
+			end := (definitionSource findCloseParenthesisFor: start) - 1.
+			definitionSource := definitionSource asRopedText
 						glamorousCodeFontAndSize.
-			(source from: start to: end) foreground: Color blue.
+			(definitionSource from: start to: end) foreground: Color blue.
 			BrEditorElement new 
 				padding: (BlInsets all: 10);
 				constraintsDo: [ :c | 
@@ -24,6 +24,6 @@ gtDefinitionFor: aView
 				editor: (BrTextEditor new
 					beLineBased;
 					beReadOnlyWithSelection;
-					text: source;
+					text: definitionSource;
 					moveCursorTo: start);
 				scrollToPosition: (location at: #line) - 1 ]

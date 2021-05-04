@@ -9,7 +9,7 @@ gtFilesFor: aView
 			((self storePaths at: #out) asFileReference
 				gtTreeFor: aView)
 				asElement ];
-		updateWhen: GxPackageBuiltEvent in: [ guix announcer ].
+		updateWhen: GxPackageBuiltEvent in: [ self guix announcer ].
 	self outIsInStore ifFalse: [
 		view
 			actionButtonIcon: BrGlamorousVectorIcons repair

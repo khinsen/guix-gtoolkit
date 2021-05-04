@@ -3,5 +3,5 @@ gtInputsFor: aView
 	<gtView>
 	^ aView list
 		title: 'Inputs';
-		priority: 7;
+		priority: 2;
 		items: [ self directInputs asOrderedCollection ]

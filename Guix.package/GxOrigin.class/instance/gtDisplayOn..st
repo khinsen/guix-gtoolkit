@@ -1,3 +1,3 @@
 accessing
 gtDisplayOn: aStream
-	aStream << uri
+	aStream << (data at: #filename)

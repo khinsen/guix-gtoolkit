@@ -1,3 +1,3 @@
 accessing
 fromJson: aDictionary
-	uri := aDictionary at: #uri
+	data := (aDictionary associations reject: [ :each | each key = #type ]) asDictionary

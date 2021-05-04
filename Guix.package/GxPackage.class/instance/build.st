@@ -1,6 +1,6 @@
 operating
 build
-	guix schedule:
+	self guix schedule:
 		(GxPackageBuilder new
-			guix: guix;
+			guix: self guix;
 			package: self)

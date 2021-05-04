@@ -6,7 +6,7 @@
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"uri"
+		"data"
 	],
 	"name" : "GxOrigin",
 	"type" : "normal"
