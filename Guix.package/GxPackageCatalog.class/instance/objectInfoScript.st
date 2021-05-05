@@ -116,8 +116,12 @@ objectInfoScript
 
 (define (cvs-origin-info origin)
   (let ((ref (origin-uri origin)))
-    `((root-directory . ,(cvs-reference-root-directory ref))
-      (module . ,(cvs-reference-module ref))
+    `((root-directory . ,(with-exception-handler (lambda (exc) "")
+                           (lambda () (cvs-reference-root-directory ref))
+                           #:unwind? #t))
+      (module . ,(with-exception-handler (lambda (exc) "")
+                   (lambda () (cvs-reference-module ref))
+                   #:unwind? #t))
       (revision . ,(cvs-reference-revision ref)))))
 
 (define (unknown-origin-info origin)
