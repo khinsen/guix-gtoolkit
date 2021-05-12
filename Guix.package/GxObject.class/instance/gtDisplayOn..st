@@ -1,3 +1,3 @@
 printing
 gtDisplayOn: aStream
-	aStream << reference basename
+	aStream << self displayString

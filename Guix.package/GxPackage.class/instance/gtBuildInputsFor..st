@@ -4,4 +4,5 @@ gtBuildInputsFor: aView
 	^ aView list
 		title: 'Build inputs';
 		priority: 3;
-		items: [ self buildInputs asOrderedCollection ]
+		items: [ self buildInputs asOrderedCollection
+					sorted: [ :a :b | a displayString <= b displayString ] ]

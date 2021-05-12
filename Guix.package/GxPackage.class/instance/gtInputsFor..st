@@ -4,4 +4,5 @@ gtInputsFor: aView
 	^ aView list
 		title: 'Inputs';
 		priority: 2;
-		items: [ self directInputs asOrderedCollection ]
+		items: [ self directInputs asOrderedCollection
+					sorted: [ :a :b | a displayString <= b displayString ] ]
