@@ -6,6 +6,7 @@ objectInfoScript
  (guix describe)
  (guix channels)
  (guix packages)
+ (guix build-system)
  (guix derivations)
  (guix store)
  (guix licenses)
@@ -69,7 +70,8 @@ objectInfoScript
       (description . ,(package-description package))
       (licenses . ,(list->vector (map license-name licenses)))
       (home-page . ,(package-home-page package))
-      (inputs . ,inputs))))
+      (inputs . ,inputs)
+      (build-system . ,(build-system-name (package-build-system package))))))
 
 (define (download-proc->symbol proc)
   (cond
