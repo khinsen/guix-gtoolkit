@@ -10,7 +10,6 @@ fromJson: aDictionary
 				package: self;
 				output: each asSymbol ].
 	inputs := aDictionary at: #inputs.
-	source := aDictionary at: #source.
 	channels := (aDictionary at: #channels)
 		collect: [ :each | catalog guix channels channelNamed: each ].
 	location := aDictionary at: #location.

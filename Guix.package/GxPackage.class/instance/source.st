@@ -1,3 +1,3 @@
 accessing
 source
-	^ catalog objectAt: source
+	^ catalog objectAt: self inputs first first

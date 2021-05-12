@@ -1,7 +1,7 @@
 initialization
 objectInfoScript
 ^'
-(use-modules
+ (use-modules
  (gnu packages)
  (guix describe)
  (guix channels)
@@ -16,6 +16,7 @@ objectInfoScript
  (guix svn-download)
  (guix cvs-download)
  ((ice-9 match))
+ ((ice-9 vlist))
  (srfi srfi-1)
  (srfi srfi-43)
  (json))
@@ -45,7 +46,7 @@ objectInfoScript
                                        (lambda (n) n)
                                        (lambda (n) n))))))))))
 
-(define (package-info package source inputs findable?)
+(define (package-info package inputs findable?)
   (let*
       ((location (package-location package))
        (license-field (package-license package))
@@ -68,7 +69,6 @@ objectInfoScript
       (description . ,(package-description package))
       (licenses . ,(list->vector (map license-name licenses)))
       (home-page . ,(package-home-page package))
-      (source . ,source)
       (inputs . ,inputs))))
 
 (define (download-proc->symbol proc)
@@ -160,58 +160,88 @@ objectInfoScript
    #:select? (lambda (p) (and (supported-package? p)
                               (not (hidden-package? p))
                               (not (package-superseded p))))))
-(define available-package-count (length available-packages))
-(define index->package
-  (list->vector
-    (delete-duplicates
-     (append available-packages
-             (package-closure available-packages)))))
 
-(define input->index (make-hash-table 40000))
-(vector-for-each (lambda (i p)
-                   (hash-set! input->index p i))
-                 index->package)
+(define (object-closure packages)
 
-(define current-input-index (vector-length index->package))
-(define reverse-input-list ''())
+  (define (add-leaf-dependencies leaves input->index index)
+    (let loop ((leaves leaves)
+               (input->index input->index)
+               (index index))
+      (match leaves
+        (()
+         (list input->index index))
+        ((leaf . rest)
+         (if (vhash-assoc leaf input->index)
+             (loop rest input->index index)
+             (loop rest 
+                   (vhash-cons leaf index input->index)
+                   (+ 1 index)))))))
 
-(define (inputs->indices inputs)
-  (define (add-input input input-info)
-    (unless (hash-ref input->index input)
-      (hash-set! input->index input current-input-index)
-      (set! reverse-input-list (cons input-info reverse-input-list))
-      (set! current-input-index (+ 1 current-input-index)))
-    (hash-ref input->index input))
-  (define indices ''())
-  (for-each (match-lambda
-              ((_ (? package? p) _ ...)
-               (set! indices (cons (hash-ref input->index p) indices)))
-              ((_ (? origin? o) _ ...)
-               (set! indices (cons (add-input o (origin-info o)) indices)))
-              ((_ (? string? s) _ ...)
-               (set! indices (cons (add-input s (file-info s)) indices)))
-              (_ #f))
-            inputs)
-  (list->vector indices))
+  (define extract-input
+    (match-lambda
+      ((? package? package)
+       package)
+      ((label (? package? package) . _)
+       package)
+      ((? origin? origin)
+       (origin-info origin))
+      ((label (? origin? origin) . _)
+       (origin-info origin))
+      ((? string? string)
+       (file-info string))
+      ((label (? string? string) . _)
+       (file-info string))
+      (_ #f)))
+  
+  (define input->index
+    (let loop ((packages packages)
+               (input->index vlist-null)
+               (index 0))
+      (match packages
+        (()
+         input->index)
+        ((package . rest)
+         (if (vhash-assoc package input->index)
+             (loop rest input->index index)
+             (match-let*
+                 ((bag            (package->bag package))
+                  (dependencies   (filter-map extract-input
+                                              (bag-direct-inputs bag)))
+                  (p-dependencies (filter package? dependencies))
+                  (l-dependencies (filter (negate package?) dependencies))
+                  ((input->index.next index.next)
+                   (add-leaf-dependencies l-dependencies input->index index)))
+               (loop (append p-dependencies rest)
+                     (vhash-cons package index.next input->index.next)
+                     (+ 1 index.next))))))))
 
-(define (package-input-indices package)
-  (vector
-   (inputs->indices (package-direct-inputs package))
-   (inputs->indices (bag-direct-inputs (package->bag package)))))
+  (define (package-input-indices package)
+    (define (i->i input)
+      (and=> (vhash-assoc input input->index)
+             cdr))
+    (list->vector
+     (map (lambda (is)
+            (list->vector (filter-map i->i (filter-map extract-input is))))
+          (list (list (package-source package))
+                (package-direct-inputs package)
+                (bag-direct-inputs (package->bag package))))))
+
+  (let ((objects (make-vector (vlist-length input->index))))
+    (vlist-for-each
+     (match-lambda
+       ((object . index)
+        (vector-set! objects index
+                     (if (package? object)
+                         (package-info object
+                                       (package-input-indices object)
+                                       (->bool (memq object available-packages)))
+                         object))))
+     input->index)
+    objects))
+
+(define objects (object-closure available-packages))
 
 (with-output-to-file (cadr (command-line))
-  (lambda ()
-    (scm->json
-     (vector-concatenate
-      (list
-       (vector-map (lambda (i p)
-                     (let* ((inputs (package-input-indices p))
-                            (source (hash-ref input->index (package-source p))))
-                       (package-info p
-                                     source
-                                     inputs
-                                     (< i available-package-count))))
-                   index->package)
-       (reverse-list->vector reverse-input-list)))))
+  (lambda () (scm->json objects))
   #:encoding "UTF-8")
 '

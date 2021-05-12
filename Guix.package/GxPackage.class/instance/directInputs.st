@@ -1,3 +1,3 @@
 accessing
 directInputs
-	^ self inputs first collect: [ :eachIndex | catalog objectAt: eachIndex ]
+	^ self inputs second collect: [ :eachIndex | catalog objectAt: eachIndex ]

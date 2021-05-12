@@ -1,3 +1,3 @@
 accessing
 buildInputs
-	^ self inputs second collect: [ :eachIndex | catalog objectAt: eachIndex ]
+	^ self inputs third collect: [ :eachIndex | catalog objectAt: eachIndex ]
