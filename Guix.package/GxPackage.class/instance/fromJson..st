@@ -10,7 +10,7 @@ fromJson: aDictionary
 				package: self;
 				output: each asSymbol ].
 	inputs := aDictionary at: #inputs.
-	buildSystem := aDictionary at: #'build-system'.
+	buildSystem := GxBuildSystem name: (aDictionary at: #'build-system').
 	channels := (aDictionary at: #channels)
 		collect: [ :each | catalog guix channels channelNamed: each ].
 	location := aDictionary at: #location.
