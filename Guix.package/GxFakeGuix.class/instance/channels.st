@@ -1,0 +1,3 @@
+accessing
+channels
+	^ GxFakeChannels new

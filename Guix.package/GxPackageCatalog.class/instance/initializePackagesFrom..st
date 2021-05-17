@@ -1,8 +1,6 @@
 initialization
-initializePackages
-	| jsonFile objectInfo numberOfObjects |
-	jsonFile := self packageInfoFile.
-	jsonFile isFile ifFalse: [ self buildObjectInfo ].
+initializePackagesFrom: jsonFile
+	| objectInfo numberOfObjects |
 	objectInfo := (NeoJSONReader on: jsonFile readStream) next.
 	numberOfObjects := objectInfo size.
 	guixObjects := objectInfo collect: [ :each |
