@@ -1,5 +1,4 @@
 accessing
 indirectInputs
-	| indirect |
-	indirect := self buildInputs copyWithoutAll: self directInputs.
-	^ indirect copyWithout: self source
+	^ (self buildInputs copyWithoutAll: self source)
+		copyWithoutAll: self directInputs.

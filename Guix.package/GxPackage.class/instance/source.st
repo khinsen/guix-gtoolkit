@@ -1,3 +1,3 @@
 accessing
 source
-	^ catalog objectAt: self inputs first first
+	^ self inputs first collect: [ :eachIndex | catalog objectAt: eachIndex ]
