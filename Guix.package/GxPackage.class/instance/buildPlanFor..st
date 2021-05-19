@@ -2,9 +2,9 @@ inspecting
 buildPlanFor: view
 	| nodes |
 	nodes := {
-				self buildPlanNodeForBuildSystem.
 				self buildPlanNodeForSource.
 				self buildPlanNodeForInputs.
+				self buildPlanNodeForBuildSystem.
 				self buildPlanNodesForOutputs
 			}.
 
@@ -28,10 +28,12 @@ buildPlanFor: view
 			BlLineElement new
 				toHead: head;
 				border: border ];
+		fromRightCenter;
+		toLeftCenter;
 		connect: {
-					(nodes at: 2) -> (nodes at: 1).
-					(nodes at: 3) -> (nodes at: 1).
-					(nodes at: 1) -> (nodes at: 4).
+					(nodes at: 1) -> (nodes at: 3).
+					(nodes at: 2) -> (nodes at: 3).
+					(nodes at: 3) -> (nodes at: 4).
 				}
 		from: #key to: #value.
 
