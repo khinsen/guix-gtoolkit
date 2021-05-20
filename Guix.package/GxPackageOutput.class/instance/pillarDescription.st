@@ -24,4 +24,7 @@ pillarDescription
 				<< '*'; cr; cr ].
 		stream
 			<< '""License(s):"" ';
-			<< (', ' join: package licenses) ]
+			<< (', ' join: package licenses);
+			cr; cr;
+			<< '""Store path:"" ';
+			<< self storePath ]
