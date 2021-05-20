@@ -1,5 +1,5 @@
 *Guix
-indexForLine: anInteger
+gxIndexForLine: anInteger
 	| lineCounter |
 	lineCounter := anInteger.
 	1 to: self size do: [ :i |

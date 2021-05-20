@@ -9,8 +9,8 @@
 		"packages",
 		"channels",
 		"guix",
-		"packagesBySpecification",
-		"guixObjects"
+		"guixObjects",
+		"packagesByName"
 	],
 	"name" : "GxPackageCatalog",
 	"type" : "normal"

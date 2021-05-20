@@ -10,7 +10,7 @@ gtDefinitionFor: aView
 		stencil: [
 			| definitionSource start end |
 			definitionSource := sourceFile contents.
-			start := (definitionSource indexForLine: (location at: #line) - 1)
+			start := (definitionSource gxIndexForLine: (location at: #line) - 1)
 							+ (location at: #column).
 			end := (definitionSource findCloseParenthesisFor: start) - 1.
 			definitionSource := definitionSource asRopedText
