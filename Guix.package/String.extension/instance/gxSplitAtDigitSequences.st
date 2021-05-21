@@ -7,9 +7,7 @@ gxSplitAtDigitSequences
 	[keyStop <= self size] whileTrue:
 		[keyStart := self skipDelimiters: digits startingAt: keyStop.
 		keyStop < keyStart
-			ifTrue: [ | digitSequence |
-			digitSequence := self copyFrom: keyStop to: (keyStart - 1).
-			tokens add: digitSequence asInteger / (10 raisedToInteger: digitSequence size)].
+			ifTrue: [tokens add: (GxVersionNumberElement digits: (self copyFrom: keyStop to: (keyStart - 1))) ].
 		keyStop := self findDelimiters: digits startingAt: keyStart.
 		keyStart < keyStop
 			ifTrue: [tokens add: (self copyFrom: keyStart to: (keyStop - 1))]].
