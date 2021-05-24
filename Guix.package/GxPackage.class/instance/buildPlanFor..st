@@ -1,23 +1,40 @@
 inspecting
 buildPlanFor: view
-	| nodes |
+	| nodes levels |
 	nodes := {
 				self buildPlanNodeForSource.
 				self buildPlanNodeForInputs.
 				self buildPlanNodeForBuildSystem.
 				self buildPlanNodesForOutputs
 			}.
+	levels := { {nodes first. nodes second}. {nodes third}. {nodes fourth} }.
 
 	view nodes
-		shape: [ :each |
-			GtMondrianUMLClassElement withDefaultContainer
-			label: (each at: #label) ];
-		with: nodes
-		forEach: [ :each |
+		shape: [ :eachLevel |
+			BlElement new constraintsDo: [ :c |
+				c horizontal fitContent.
+				c vertical fitContent ] ];
+		with: levels;
+		forEach: [ :eachLevel |
 			view nodes
-				shape: [ :eachGxObject | eachGxObject asNodeElement ];
-				with: (each at: #items).
-			view layout vertical ].
+				shape: [ :eachNode |
+					GtMondrianUMLClassElement withDefaultContainer
+						label: (eachNode at: #label) ];
+				with: eachLevel
+				forEach: [ :eachNode |
+					view nodes
+						shape: [ :eachGxObject | eachGxObject asNodeElement ];
+						with: (eachNode at: #items).
+					view layout vertical ].
+			view layout vertical
+				cellSpacing: 20;
+				alignTopRight ].
+
+	view edges
+	"Invisible edges, only for geting the right layout."
+		shape: [ BlLineElement new ];
+		connect: { levels first -> levels second. levels second -> levels third }
+		from: #key to: #value.
 
 	view edges
 		shape: [ :x |
