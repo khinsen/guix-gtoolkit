@@ -54,5 +54,6 @@ buildPlanFor: view
 				}
 		from: #key to: #value.
 
-	view layout horizontalTree.
+	view layout horizontalTree
+		levelDistance: 50.
 	^ view
