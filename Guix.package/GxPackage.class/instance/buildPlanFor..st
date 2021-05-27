@@ -38,18 +38,24 @@ buildPlanFor: view
 
 	view edges
 		shape: [ :x |
-			| head border |
-			border := BlBorder paint: Color gray width: 1.
-			head := BlArrowheadSimpleArrow new
-						border: border.
-			BlLineElement new
-				toHead: head;
-				border: border ];
+			BlSigmoidElement new
+				border: (BlBorder paint: Color gray width: 1) ];
 		fromRightCenter;
 		toLeftCenter;
 		connect: {
 					(nodes at: 1) -> (nodes at: 3).
 					(nodes at: 2) -> (nodes at: 3).
+				}
+		from: #key to: #value.
+	"Use a straight line for the last connection because of a bug in
+	BlSigmoidElement that makes the element invisible if it's straight."
+	view edges
+		shape: [ :x |
+			BlLineElement new
+				border: (BlBorder paint: Color gray width: 1) ];
+		fromRightCenter;
+		toLeftCenter;
+		connect: {
 					(nodes at: 3) -> (nodes at: 4).
 				}
 		from: #key to: #value.
