@@ -1,3 +1,3 @@
 executing
 commandLineArguments
-	^ self timeMachineArguments, #('environment' '--pure'), self packageArguments
+	^ self timeMachineArguments, #('environment' '--pure'), self gcRootArguments, self packageArguments

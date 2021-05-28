@@ -1,18 +1,14 @@
 {
 	"commentStamp" : "",
-	"super" : "Object",
+	"super" : "Announcement",
 	"category" : "Guix-Environments",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
 	"instvars" : [
-		"guix",
-		"name",
-		"channels",
-		"packageOutputs",
-		"directory",
+		"environment",
 		"path"
 	],
-	"name" : "GxEnvironment",
+	"name" : "GxEnvironmentBuiltEvent",
 	"type" : "normal"
 }

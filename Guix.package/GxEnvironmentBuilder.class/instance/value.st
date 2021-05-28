@@ -1,0 +1,3 @@
+operating
+value
+	self runBuildProcess

@@ -7,12 +7,12 @@
 	"classvars" : [ ],
 	"instvars" : [
 		"guix",
-		"name",
-		"channels",
-		"packageOutputs",
-		"directory",
-		"path"
+		"process",
+		"buildLog",
+		"status",
+		"environment",
+		"searchPaths"
 	],
-	"name" : "GxEnvironment",
+	"name" : "GxEnvironmentBuilder",
 	"type" : "normal"
 }
