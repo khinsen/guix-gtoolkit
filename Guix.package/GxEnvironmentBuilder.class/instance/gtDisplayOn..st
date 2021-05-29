@@ -2,6 +2,6 @@ printing
 gtDisplayOn: aStream
 	aStream
 		<< 'Environment builder for ';
-		<< environment printString;
+		<< environment name;
 		<< ', status: ';
 		<< status asString.
