@@ -4,7 +4,7 @@ gtSpotterForPackageHomePagesFor: aStep
 	^ aStep listProcessor
 		priority: 3;
 		title: 'Home pages';
-		allCandidates: [ packageOutputs ];
+		allCandidates: [ visiblePackageOutputs ];
 		filter: GtFilterSubstring;
 		candidatesLimit: 7;
 		itemName: [ :each | each package homePage ];

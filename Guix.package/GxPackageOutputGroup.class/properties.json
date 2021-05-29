@@ -9,7 +9,8 @@
 		"packages",
 		"name",
 		"packageOutputs",
-		"guix"
+		"guix",
+		"visiblePackageOutputs"
 	],
 	"name" : "GxPackageOutputGroup",
 	"type" : "normal"

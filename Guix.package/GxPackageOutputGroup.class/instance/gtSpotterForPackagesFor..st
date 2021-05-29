@@ -4,7 +4,7 @@ gtSpotterForPackagesFor: aStep
 	^ aStep listProcessor
 		priority: 1;
 		title: 'Packages';
-		allCandidates: [ packageOutputs ];
+		allCandidates: [ visiblePackageOutputs ];
 		filter: GtFilterSubstring;
 		candidatesLimit: 7;
 		itemName: [ :each | each package name ];
