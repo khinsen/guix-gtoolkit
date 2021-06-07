@@ -21,4 +21,4 @@ fromJson: aDictionary
 	homePage := aDictionary at: #'home-page'.
 	aDictionary at: #'store-paths' ifPresent: [ :sp |
 		storePaths := sp ].
-	dependents := OrderedCollection new.
+	dependents := Set new.

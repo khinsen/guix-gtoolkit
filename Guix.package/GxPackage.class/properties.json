@@ -19,7 +19,8 @@
 		"shortestSpecification",
 		"inputs",
 		"buildSystem",
-		"dependents"
+		"dependents",
+		"recursiveDependents"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"
