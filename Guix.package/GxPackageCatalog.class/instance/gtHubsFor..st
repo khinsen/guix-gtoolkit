@@ -6,7 +6,7 @@ gtHubsFor: aView
 		priority: 8;
 		items: [ self dependencyHubs ];
 		column: 'Package source' text: #key;
-		column: 'Dependents' text: #value;
-		send: [ :each | packages packages select: [ :p |
-							p source includes: each key ] ];
+		column: 'Dependents' text: [ :each | each value size ];
+		send: [ :each | each value asOrderedCollection
+					sorted: [ :a :b | a displayString <= b displayString ] ];
 		yourself
