@@ -20,4 +20,5 @@ fromJson: aDictionary
 	licenses := aDictionary at: #licenses.
 	homePage := aDictionary at: #'home-page'.
 	aDictionary at: #'store-paths' ifPresent: [ :sp |
-		storePaths := sp ]
+		storePaths := sp ].
+	dependents := OrderedCollection new.

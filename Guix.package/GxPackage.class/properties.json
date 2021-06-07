@@ -18,7 +18,8 @@
 		"channels",
 		"shortestSpecification",
 		"inputs",
-		"buildSystem"
+		"buildSystem",
+		"dependents"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"
