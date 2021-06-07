@@ -1,12 +1,15 @@
 operating
 dependencyHubs
-	| nbPackages dependents |
-	nbPackages := packages size.
-	dependents := packages packages
-		collect: [ :each |
-			{ each.
-			 	each recursiveDependents size.
-			 	(100 * each recursiveDependents size) // nbPackages } ]
-		thenSelect: [ :each | each second > 0 ].
-	dependents sort: [ :a :b | a second >= b second ].
-	^ dependents 
+	"Because of many near-duplicate packages resulting from rewrites,
+	 hubs are expressed in terms of source objects than packages."
+	| dependents sourceDependents |
+	sourceDependents := Dictionary new.
+	packages packages do: [ :each |
+		| nbDependents |
+		nbDependents := (each recursiveDependents flatCollect: #source) size.
+		each source do: [ :source |
+			sourceDependents
+				at: source
+				put: nbDependents + (sourceDependents at: source ifAbsent: [ 0 ] ) ] ].
+	^ sourceDependents associations asOrderedCollection 
+		sort: [ :a :b | a value >= b value ]

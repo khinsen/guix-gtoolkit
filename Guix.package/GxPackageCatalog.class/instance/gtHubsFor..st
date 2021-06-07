@@ -5,8 +5,8 @@ gtHubsFor: aView
 		title: 'Dependency Hubs';
 		priority: 8;
 		items: [ self dependencyHubs ];
-		column: 'Package' text: #first;
-		column: 'Dependents' text: #second;
-		column: '%' text: #third;
-		send: #first;
+		column: 'Package source' text: #key;
+		column: 'Dependents' text: #value;
+		send: [ :each | packages packages select: [ :p |
+							p source includes: each key ] ];
 		yourself
