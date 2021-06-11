@@ -1,3 +1,3 @@
 accessing
-channelNamed: aSymbol
+first
 	^ GxFakeChannel new name: #fake

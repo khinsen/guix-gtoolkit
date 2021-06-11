@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GxChannel",
+	"category" : "Guix-Channels",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GxFakeChannel",
+	"type" : "normal"
+}

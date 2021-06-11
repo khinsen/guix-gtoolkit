@@ -1,13 +1,13 @@
-inspecting
-pillarDescription
+accessing
+markdownDescription
 	^ String streamContents: [ :stream |
 		stream
-			<< '""Name:"" '; << package name; << ':'; << output; cr;
-			<< '""Version:"" '; << package version; cr.
+			<< '**Name:** '; << package name; << ':'; << output; cr;
+			<< '**Version:** '; << package version; cr.
 		package channels size = 1
-			ifTrue: [ stream << '""Channel:"" '; << package channels first name ]
+			ifTrue: [ stream << '**Channel:** '; << package channels first name ]
 			ifFalse: [
-				stream << '""Channels:"" ';
+				stream << '**Channels:** ';
 					<< (', ' join: (package channels collect: #name)) ].
 		stream
 			cr; cr;
@@ -17,14 +17,13 @@ pillarDescription
 			cr.
 		package homePage ifNotNil: [
 			stream
-				<< '""Home page:"" *'; 
+				<< '**Home page:** ['; 
 				<< package homePage;
-				<< '>';
+				<< '](';
 				<< package homePage;
-				<< '*'; cr; cr ].
+				<< ')'; cr; cr ].
 		stream
-			<< '""License(s):"" ';
+			<< '**License(s):** ';
 			<< (', ' join: package licenses);
 			cr; cr;
-			<< '""Store path:"" ';
-			<< self storePath ]
+			<< '**Store path:** '; << self storePath  ]

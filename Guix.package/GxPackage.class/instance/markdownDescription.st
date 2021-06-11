@@ -1,13 +1,13 @@
 accessing
-pillarDescription
+markdownDescription
 	^ String streamContents: [ :stream |
 		stream
-			<< '""Name:"" '; << name; cr;
-			<< '""Version:"" '; << version; cr.
+			<< '**Name:** '; << name; cr;
+			<< '**Version:** '; << version; cr.
 		channels size = 1
-			ifTrue: [ stream << '""Channel:"" '; << channels first name ]
+			ifTrue: [ stream << '**Channel:** '; << channels first name ]
 			ifFalse: [
-				stream << '""Channels:"" ';
+				stream << '**Channels:** ';
 					<< (', ' join: (channels collect: #name)) ].
 		stream
 			cr; cr;
@@ -17,11 +17,11 @@ pillarDescription
 			cr.
 		homePage ifNotNil: [
 			stream
-				<< '""Home page:"" *'; 
+				<< '**Home page:** ['; 
 				<< homePage;
-				<< '>';
+				<< '](';
 				<< homePage;
-				<< '*'; cr; cr ].
+				<< ')'; cr; cr ].
 		stream
-			<< '""License(s):"" ';
+			<< '**License(s):** ';
 			<< (', ' join: self licenses) ]
