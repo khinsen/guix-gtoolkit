@@ -1,1 +1,1 @@
-This is a helper class for ${method:name=String>>#gxCompareNumerically:}$
+This is a helper class for {{gtMethod:name=String>>#gxCompareNumerically:}}
