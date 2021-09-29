@@ -1,7 +1,7 @@
 REPL
 runReplCommand: aString
 	| stream result localhost openStream |
-	FileStream stdout
+	Stdio stdout
 		<< 'REPL: '; << aString; lf; flush.
 	localhost := SocketAddress fromDottedString: '127.0.0.1'.
 	openStream := [ stream := SocketStream openConnectionToHost: localhost port: self replProcessPort timeout: 600 ].
@@ -13,7 +13,7 @@ runReplCommand: aString
 	stream nextPutAll: aString; cr; flush.
 	result := stream upTo: Character lf.
 	stream close.
-	FileStream stdout
+	Stdio stdout
 		<< 'RESULT: '; << result; lf; flush.
 	(GxReplCommandSignal new
 		process: replProcess;
