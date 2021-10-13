@@ -5,7 +5,7 @@ executeCommand: anArray
 	self assert: tempFileReference exists not.
 	process := self class newGuixProcessWithArguments: anArray.
 	process
-		redirectStdoutTo: (StandardFileStream newFileNamed:  tempFileReference fullName);
+		redirectStdoutTo: tempFileReference writeStream;
 		runAndWait.
 	output := tempFileReference contents.
 	tempFileReference delete.
