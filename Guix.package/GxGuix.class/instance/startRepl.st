@@ -10,8 +10,8 @@ startRepl
 		self newGuixProcessWithArguments:
 			{ 'repl'. '-t'. 'machine'. '--listen=tcp:', portString }.
 	replProcess
-		environmentAt: 'GxGuixPort' put: portString;
-		terminateOnShutdown;
-		run.
+		env: 'GxGuixPort' value: portString;
+		pipeStdout;
+		spawn.
 	5 seconds wait.
 	self initializeRepl

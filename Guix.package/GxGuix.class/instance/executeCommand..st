@@ -1,14 +1,5 @@
 operating
 executeCommand: anArray
-	| tempFileReference output process |
-	tempFileReference := FileLocator temp / 'guix_command_stdout.txt'.
-	self assert: tempFileReference exists not.
+	| process |
 	process := self class newGuixProcessWithArguments: anArray.
-	process
-		redirectStdoutTo: tempFileReference writeStream;
-		runAndWait.
-	output := tempFileReference contents.
-	tempFileReference delete.
-	process isSuccess
-		ifFalse: [ self error: process exitStatusInterpreter printString ].
-	^ output
+	^ process output stdout
