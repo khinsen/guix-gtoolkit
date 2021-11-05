@@ -1,19 +1,19 @@
 operating
 runBuildProcess
 	status := #running.
-	process := guix newGuixProcessWithArguments:
-				environment commandLineArguments, #('--search-paths').
-	process
-		redirectStdout;
-		redirectStderr;
-		run;
-		waitForExitPollingEvery: (Delay forMilliseconds: 1000)
-			doing: [ :aProcess :stdoutStream :stderrStream |
-				searchPaths := searchPaths, stdoutStream upToEnd.
-				buildLog := buildLog, stderrStream upToEnd ];
-		closeAndCleanStreams.
-	process isSuccess
-		ifFalse: [ self error: process exitStatusInterpreter printString ].
+	process := (guix newGuixProcessWithArguments:
+				environment commandLineArguments, #('--search-paths'))
+		pipeStdout;
+		pipeStderr;
+		spawn.
+	process asynchronousStdout
+		pollStringEvery: 1 second
+		do: [ :aString | searchPaths := searchPaths, aString ].
+	process asynchronousStderr
+		pollStringEvery: 1 second
+		do: [ :aString | buildLog := buildLog, aString ].
+	process wait isSuccess
+		ifFalse: [ self error: process output stdErr ].
 	environment path: self path.
 	guix announce: (GxEnvironmentBuiltEvent for: environment at: self path).
 	status := #finished.

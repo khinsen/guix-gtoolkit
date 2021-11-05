@@ -5,7 +5,7 @@ buildObjectInfo
 	scriptFile writeStreamDo: [ :s | s << self objectInfoScript ].
 	process := guix newGuixProcessWithArguments:
 				{ 'repl'. scriptFile fullName. self packageInfoFile fullName }.
-	process runAndWait.
+	process status.
 	scriptFile delete.
-	process isSuccess
-		ifFalse: [ self error: process exitStatusInterpreter printString ]
+	process status isSuccess
+		ifFalse: [ self error: process output stdErr ]
