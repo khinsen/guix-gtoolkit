@@ -8,4 +8,4 @@ buildObjectInfo
 	process status.
 	scriptFile delete.
 	process status isSuccess
-		ifFalse: [ self error: process output stdErr ]
+		ifFalse: [ self error: process output stderr ]
