@@ -36,6 +36,8 @@ objectInfoScript
         (let loop ((m matches)
                    (l (string-length (package-name package))))
           (cond
+           ((> l (string-length full-specification))
+            full-specification)
            ((equal? (car m) full-specification)
             (substring full-specification 0 l))
            ((null? (cdr m))

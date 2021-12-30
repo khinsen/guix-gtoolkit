@@ -6,6 +6,6 @@ buildObjectInfo
 	process := guix newGuixProcessWithArguments:
 				{ 'repl'. scriptFile fullName. self packageInfoFile fullName }.
 	process status.
-	scriptFile delete.
 	process status isSuccess
-		ifFalse: [ self error: process output stderr ]
+		ifFalse: [ self error: process output stderr ].
+	scriptFile delete
