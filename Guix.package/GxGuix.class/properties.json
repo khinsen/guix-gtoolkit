@@ -12,7 +12,8 @@
 		"tasks",
 		"announcer",
 		"events",
-		"packageCatalog"
+		"packageCatalog",
+		"replProcessBuilder"
 	],
 	"name" : "GxGuix",
 	"type" : "normal"
