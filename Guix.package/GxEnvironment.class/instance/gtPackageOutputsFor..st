@@ -5,6 +5,7 @@ gtPackageOutputsFor: aView
 		title: 'Package Outputs';
 		priority: 1;
 		items: [ packageOutputs ];
+		send: #value;
 		column: 'Specification' text: #key;
 		column: 'Name' text: [ :each | each value package name ];
 		column: 'Version' text: [ :each | each value package version ];
