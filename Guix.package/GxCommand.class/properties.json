@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "<historical>",
-	"super" : "GtUnixSubprocess",
+	"super" : "GtSubprocessWithInMemoryOutput",
 	"category" : "Guix-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
