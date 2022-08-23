@@ -1,0 +1,11 @@
+{
+	"commentStamp" : "",
+	"super" : "GxEnvironment",
+	"category" : "Guix-Environments",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "GxPythonEnvironment",
+	"type" : "normal"
+}
