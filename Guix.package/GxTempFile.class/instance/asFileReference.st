@@ -1,3 +1,3 @@
 converting
 asFileReference
-	^ name asFileReference
+	^ self name asFileReference

@@ -1,7 +1,6 @@
 executing
 command: aString arguments: anArray
-	^ GxCommand new
-		gxEnvironment: self;
+	^ self newCommand
 		command: aString;
 		arguments: anArray;
 		yourself

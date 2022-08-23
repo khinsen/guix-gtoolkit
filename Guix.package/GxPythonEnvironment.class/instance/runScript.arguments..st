@@ -1,13 +1,12 @@
 running
 runScript: aString arguments: anArray
-	| scriptFile output |
+	| scriptFile process |
 	scriptFile := GxTempFile new.
 	scriptFile asFileReference writeStreamDo: [ :s |
 		s << aString ].
-	output := (self
+	process := self
 		command: 'python3'
-		arguments: { scriptFile asString }, anArray)
-		runAndWait;
-		stdout.
+		arguments: { scriptFile asString }, anArray.
+	process runAndWait.
 	scriptFile delete.
-	^ output
+	^ process
