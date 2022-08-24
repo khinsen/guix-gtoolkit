@@ -1,3 +1,4 @@
 inspecting
 manifest
-	^ String streamContents: [ :s | self writeManifestTo: s ]
+	^ GxGuix executeCommand:
+		(' ' split: self commandLine) allButFirst asArray, #('--export-manifest')
