@@ -13,6 +13,6 @@ runBuildProcess
 		pollStringEvery: 1 second
 		do: [ :aString | buildLog := buildLog, aString ].
 	process wait isSuccess
-		ifFalse: [ self error: process output stdErr ].
+		ifFalse: [ self error: buildLog ].
 	guix announce: (GxPackageBuiltEvent for: package).
 	status := #finished.
