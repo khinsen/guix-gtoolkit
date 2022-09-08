@@ -1,5 +1,6 @@
 accessing
 executeCommand: anArray
-	| process |
+	| process output |
 	process := self newGuixProcessWithArguments: anArray.
-	^ process output stdout
+	output := process output.
+	^ { output stdout. output stderr }
