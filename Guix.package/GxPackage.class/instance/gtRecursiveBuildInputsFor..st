@@ -1,10 +1,10 @@
 inspecting
-gtDependentsFor: aView
+gtRecursiveBuildInputsFor: aView
 	<gtView>
 	dependents ifEmpty: [ ^ aView empty ].
 	^ aView list
-		title: 'Dependents';
-		priority: 3;
-		items: [ self dependents asOrderedCollection
+		title: 'Recursive Inputs';
+		priority: 2;
+		items: [ self recursiveBuildInputs asOrderedCollection
 					sorted: [ :a :b | a displayString <= b displayString ] ];
 		yourself.

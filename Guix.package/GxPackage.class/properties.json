@@ -20,7 +20,8 @@
 		"inputs",
 		"buildSystem",
 		"dependents",
-		"recursiveDependents"
+		"recursiveDependents",
+		"recursiveBuildInputs"
 	],
 	"name" : "GxPackage",
 	"type" : "normal"
