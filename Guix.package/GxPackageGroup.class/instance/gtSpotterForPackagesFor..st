@@ -7,4 +7,4 @@ gtSpotterForPackagesFor: aStep
 		allCandidates: [ visiblePackages ];
 		filter: GtFilterSubstring;
 		candidatesLimit: 7;
-		itemName: #name
+		itemName: #shortestSpecification
