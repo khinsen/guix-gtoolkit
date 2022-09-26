@@ -1,10 +1,9 @@
 inspecting
-gtSpotterForPackageHomePagesFor: aStep
+gtSpotterForPackageHomePagesFor: aSearch
 	<gtSearch>
-	^ aStep listProcessor
+	^ aSearch list
 		priority: 3;
 		title: 'Home pages';
-		allCandidates: [ visiblePackages ];
-		filter: GtFilterSubstring;
-		candidatesLimit: 7;
+		items: [ visiblePackages ];
+		filterBySubstring;
 		itemName: #homePage

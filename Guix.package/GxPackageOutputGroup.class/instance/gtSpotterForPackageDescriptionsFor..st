@@ -1,12 +1,11 @@
 inspecting
-gtSpotterForPackageDescriptionsFor: aStep
+gtSpotterForPackageDescriptionsFor: aSearch
 	<gtSearch>
-	^ aStep listProcessor
+	^ aSearch list
 		priority: 2;
 		title: 'Descriptions';
-		allCandidates: [ visiblePackageOutputs ];
-		filter: GtFilterSubstrings;
-		candidatesLimit: 7;
+		items: [ visiblePackageOutputs ];
+		filterBySubstring;
 		itemName: [ :each |
 			each package synopsis, ' ',
 			each package description ]

@@ -1,10 +1,9 @@
 inspecting
-gtSpotterForPackagesFor: aStep
+gtSpotterForPackagesFor: aSearch
 	<gtSearch>
-	^ aStep listProcessor
+	^ aSearch list
 		priority: 1;
 		title: 'Packages';
-		allCandidates: [ visiblePackages ];
-		filter: GtFilterSubstring;
-		candidatesLimit: 7;
+		items: [ visiblePackages ];
+		filterBySubstring;
 		itemName: #shortestSpecification
