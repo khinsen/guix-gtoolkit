@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GxStoreItem",
+	"category" : "Guix-Store",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"link"
+	],
+	"name" : "GxGCRoot",
+	"type" : "normal"
+}
