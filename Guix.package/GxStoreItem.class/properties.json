@@ -1,0 +1,17 @@
+{
+	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "Guix-Store",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"file",
+		"references",
+		"referrers",
+		"requisites",
+		"derivers"
+	],
+	"name" : "GxStoreItem",
+	"type" : "normal"
+}

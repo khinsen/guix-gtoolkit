@@ -4,3 +4,4 @@ SystemOrganization addCategory: #'Guix-Core'!
 SystemOrganization addCategory: #'Guix-Environments'!
 SystemOrganization addCategory: #'Guix-Packages'!
 SystemOrganization addCategory: #'Guix-REPL'!
+SystemOrganization addCategory: #'Guix-Store'!
